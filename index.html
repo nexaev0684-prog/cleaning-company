@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Клининговая Компания</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+    
+    <script>
+    function openTelegram(chatId) {
+      // Для iOS (iPhone/iPad) - пробуем разные схемы
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      
+      if (isIOS) {
+        // Для iOS используем ссылку с https://t.me, iOS сама предложит открыть в приложении
+        window.location.href = 'https://t.me/' + chatId;
+      } else {
+        // Для Android сначала пробуем открыть в приложении
+        window.location.href = 'tg://resolve?domain=' + chatId;
+        
+        // Если через 2 секунды не открылось - открываем в браузере
+        setTimeout(function() {
+          window.location.href = 'https://t.me/' + chatId;
+        }, 2000);
+      }
+    }
+    
+    // Проверяем, открыт ли сайт на телефоне
+    function checkMobile() {
+      if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        // Показываем предупреждение, что это мобильная версия
+        console.log("Мобильная версия сайта");
+      }
+    }
+    
+    // Запускаем при загрузке
+    window.onload = checkMobile;
+    </script>
+    
+    <style>
+      .rounded-ing {
+        width: 60%;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        padding: 3em;
+        margin-bottom: 2em;
+      }
+      .timeline {
+        position: relative;
+        padding: 20px 0;
+      }
+      .timeline-item {
+        margin-bottom: 30px;
+        position: relative;
+      }
+      .timeline-year {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #0d6efd;
+      }
+      .company-card {
+        transition: transform 0.3s;
+        margin-bottom: 20px;
+      }
+      .company-card:hover {
+        transform: translateY(-5px);
+      }
+      .values-section {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+        margin-top: 50px;
+      }
+      @media (max-width: 768px) {
+        .rounded-ing {
+          width: 80%;
+          padding: 2em;
+        }
+        .display-4 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand p-0" href="/">
+          <img src="image.png" alt="logo" width="40"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="prace.html">Прайс-лист</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">О нас</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- ПЕРВЫЙ СЛАЙД - Главная -->
+    <div class="container text-center my-5">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <img class="rounded-ing" src="image copy 2.png" alt="Love.clean" />
+          <h1 class="fw-light">Клининговая компания с Любовью</h1>
+          <p class="lead text-muted">
+            Клининговая компания, предлагаем свои услуги по уборке в домах.
+            Работаем как с юр. лицами, так и физ лицами.
+          </p>
+          
+          <!-- ↓↓↓ КНОПКА ДЛЯ СВЯЗИ - ЗАМЕНИТЕ НА СВОЙ USERNAME ↓↓↓ -->
+          <a href="javascript:void(0)" onclick="openTelegram('Lubasha9999')" class="btn btn-primary">
+            📱 Для связи
+          </a>
+          
+          <!-- ↓↓↓ КНОПКА TELEGRAM КАНАЛА - ЗАМЕНИТЕ НА НАЗВАНИЕ КАНАЛА ↓↓↓ -->
+          <a href="javascript:void(0)" onclick="openTelegram('love_cleanmoon')" class="btn btn-secondary">
+            📢 Телеграмм канал
+          </a>
+          <!-- ↑↑↑ КОНЕЦ БЛОКА ССЫЛОК ↑↑↑ -->
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- ВТОРОЙ СЛАЙД - О нас (История компании) -->
+    <div id="about" class="container my-5">
+      <div class="text-center mb-5">
+        <h2 class="display-4">О нашей компании</h2>
+        <p class="lead">История развития и наши ценности</p>
+        <hr class="w-25 mx-auto">
+      </div>
+
+      <!-- История компании -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <h3 class="text-center mb-4">Наш путь</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="card company-card">
+                <div class="card-body">
+                  <div class="timeline-year">2020</div>
+                  <h5>Основание компании</h5>
+                  <p>Компания "С Любовью" начала свой путь с небольшой команды из 3 человек, которые верили в чистоту и качество. Начинали с уборки квартир и маленьких офисов.</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="card company-card">
+                <div class="card-body">
+                  <div class="timeline-year">2022</div>
+                  <h5>Расширение команды и услуг</h5>
+                  <p>Команда выросла до 15 профессиональных клинеров. Мы добавили новые услуги: генеральную уборку, мойку окон, химчистку мягкой мебели и эко-уборку.</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="card company-card">
+                <div class="card-body">
+                  <div class="timeline-year">2024</div>
+                  <h5>Выход на новый уровень</h5>
+                  <p>Начали сотрудничество с крупными компаниями и ТЦ. Внедрили эко-технологии уборки и систему контроля качества. Нас выбрали более 500 постоянных клиентов.</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="card company-card">
+                <div class="card-body">
+                  <div class="timeline-year">2026</div>
+                  <h5>Сегодня</h5>
+                  <p>Мы - команда из 30+ профессионалов, используем современное оборудование и экологичные средства. Наша миссия - делать мир чище с любовью к каждому клиенту.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Наши ценности -->
+      <div class="values-section rounded">
+        <div class="row text-center">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4>❤️ Качество</h4>
+                <p>Используем только профессиональные средства и современное оборудование</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4>🌱 Эко-подход</h4>
+                <p>Безопасные для здоровья и окружающей среды средства уборки</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4>🤝 Надежность</h4>
+                <p>Гарантия качества и индивидуальный подход к каждому клиенту</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Статистика -->
+      <div class="row text-center mt-5">
+        <div class="col-md-3 col-6 mb-3">
+          <h3 class="text-primary">500+</h3>
+          <p>Довольных клиентов</p>
+        </div>
+        <div class="col-md-3 col-6 mb-3">
+          <h3 class="text-primary">30+</h3>
+          <p>Профессионалов</p>
+        </div>
+        <div class="col-md-3 col-6 mb-3">
+          <h3 class="text-primary">4+</h3>
+          <p>Года работы</p>
+        </div>
+        <div class="col-md-3 col-6 mb-3">
+          <h3 class="text-primary">24/7</h3>
+          <p>Поддержка</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
