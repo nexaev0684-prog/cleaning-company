@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Прайс-лист</title>
+    <title>Прайс-лист | Клининговая компания С Любовью</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -20,10 +20,37 @@
       integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
       crossorigin="anonymous"
     ></script>
+    
+    <!-- Функция для открытия Telegram -->
+    <script>
+    function openTelegram(chatId) {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      if (isIOS) {
+        window.location.href = 'https://t.me/' + chatId;
+      } else {
+        window.location.href = 'tg://resolve?domain=' + chatId;
+        setTimeout(function() {
+          window.location.href = 'https://t.me/' + chatId;
+        }, 2000);
+      }
+    }
+    </script>
+    
     <style>
       .card-img-top {
         height: 200px;
         object-fit: cover;
+      }
+      .price-tag {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #0d6efd;
+      }
+      .price-old {
+        text-decoration: line-through;
+        color: #999;
+        font-size: 0.9rem;
+        margin-right: 10px;
       }
     </style>
   </head>
@@ -61,42 +88,128 @@
     </nav>
 
     <div class="container my-5">
+      <!-- Заголовок страницы -->
+      <div class="text-center mb-5">
+        <h1 class="display-4">💰 Наши цены</h1>
+        <p class="lead">Выберите услугу и узнайте стоимость</p>
+        <hr class="w-25 mx-auto">
+      </div>
+      
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Генеральная уборка -->
         <div class="col">
-          <div class="card h-100">
+          <div class="card h-100 shadow-sm">
             <img src="photo_2026-02-27_16-49-28.jpg" class="card-img-top" alt="Генеральная уборка" />
             <div class="card-body">
-              <h5 class="card-title">Генеральная уборка</h5>
+              <h5 class="card-title">🧹 Генеральная уборка</h5>
               <p class="card-text">
                 Полная уборка квартир, домов и офисов. Включает мойку всех поверхностей, чистку сантехники, мытье полов и вынос мусора.
               </p>
-              <a href="https://t.me/love_cleanmoon" class="btn btn-primary">Узнать цену</a>
+              <div class="mt-3">
+                <span class="price-tag">от 2 500 ₽</span>
+                <small class="text-muted d-block">*зависит от площади</small>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+              <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-primary w-100">
+                🤖 Узнать точную цену
+              </a>
             </div>
           </div>
         </div>
+        
+        <!-- Мойка окон -->
         <div class="col">
-          <div class="card h-100">
+          <div class="card h-100 shadow-sm">
             <img src="photo_2026-02-27_16-49-36.jpg" class="card-img-top" alt="Мойка окон" />
             <div class="card-body">
-              <h5 class="card-title">Мойка окон, лоджий, балконов, витражей, перегородок</h5>
+              <h5 class="card-title">🪟 Мойка окон и балконов</h5>
               <p class="card-text">
                 Профессиональная мойка окон любой сложности. Чистота без разводов с использованием специальных средств.
               </p>
-              <a href="https://t.me/love_cleanmoon" class="btn btn-primary">Узнать цену</a>
+              <div class="mt-3">
+                <span class="price-tag">от 500 ₽</span>
+                <small class="text-muted d-block">*за одно окно</small>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+              <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-primary w-100">
+                🤖 Узнать точную цену
+              </a>
             </div>
           </div>
         </div>
+        
+        <!-- Эко-уборка -->
         <div class="col">
-          <div class="card h-100">
+          <div class="card h-100 shadow-sm">
             <img src="photo_2026-02-27_16-49-41.jpg" class="card-img-top" alt="Эко уборка" />
             <div class="card-body">
-              <h5 class="card-title">ЭКО уборка квартир, домов, офисов</h5>
+              <h5 class="card-title">🌿 ЭКО уборка</h5>
               <p class="card-text">
                 Безопасная уборка с использованием экологичных средств. Идеально для семей с детьми и аллергиков.
               </p>
-              <a href="https://t.me/love_cleanmoon" class="btn btn-primary">Узнать цену</a>
+              <div class="mt-3">
+                <span class="price-tag">от 2 500 ₽</span>
+                <small class="text-muted d-block">*гипоаллергенные средства</small>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+              <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-primary w-100">
+                🤖 Узнать точную цену
+              </a>
             </div>
           </div>
+        </div>
+      </div>
+      
+      <!-- Полный прайс-лист -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h3 class="text-center mb-4">📋 Полный прайс-лист</h3>
+              <div class="row">
+                <div class="col-md-6">
+                  <h5>🏠 Уборка квартир</h5>
+                  <ul class="list-unstyled">
+                    <li>• Стандартная уборка (до 50 м²) — <strong>от 2 500 ₽</strong></li>
+                    <li>• Генеральная уборка (до 50 м²) — <strong>от 5 000 ₽</strong></li>
+                    <li>• После ремонта (до 50 м²) — <strong>от 7 000 ₽</strong></li>
+                  </ul>
+                  <h5 class="mt-3">🏢 Уборка офисов</h5>
+                  <ul class="list-unstyled">
+                    <li>• Ежедневная уборка (до 100 м²) — <strong>от 3 000 ₽</strong></li>
+                    <li>• Генеральная уборка (до 100 м²) — <strong>от 8 000 ₽</strong></li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h5>🪟 Дополнительные услуги</h5>
+                  <ul class="list-unstyled">
+                    <li>• Мойка окон — <strong>от 500 ₽/окно</strong></li>
+                    <li>• Химчистка мебели — <strong>от 1 500 ₽</strong></li>
+                    <li>• Уборка после мероприятий — <strong>от 4 000 ₽</strong></li>
+                  </ul>
+                  <div class="alert alert-info mt-3">
+                    <strong>💡 Акция!</strong> При заказе генеральной уборки — мойка окон в подарок!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Кнопка связи -->
+      <div class="text-center mt-5">
+        <p class="lead">📞 Для расчёта точной стоимости свяжитесь с нами:</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="javascript:void(0)" onclick="openTelegram('Lubasha9999')" class="btn btn-primary btn-lg">
+            📱 Написать менеджеру
+          </a>
+          <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-success btn-lg">
+            🤖 Наш бот
+          </a>
         </div>
       </div>
     </div>
