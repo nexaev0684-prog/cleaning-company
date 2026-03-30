@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Клининговая Компания</title>
+    <title>Клининговая компания с Любовью</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -35,12 +35,10 @@
     // Проверяем, открыт ли сайт на телефоне
     function checkMobile() {
       if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        // Показываем предупреждение, что это мобильная версия
         console.log("Мобильная версия сайта");
       }
     }
     
-    // Запускаем при загрузке
     window.onload = checkMobile;
     </script>
     
@@ -77,6 +75,52 @@
         padding: 50px 0;
         margin-top: 50px;
       }
+      .contact-info {
+        background-color: #e9ecef;
+        padding: 30px 0;
+        margin-top: 50px;
+      }
+      .contact-item {
+        margin-bottom: 15px;
+      }
+      .contact-item a {
+        text-decoration: none;
+        color: #0d6efd;
+        font-size: 1.1rem;
+      }
+      .contact-item a:hover {
+        text-decoration: underline;
+      }
+      .review-card {
+        background-color: #fff;
+        border-left: 4px solid #0d6efd;
+        transition: transform 0.3s;
+      }
+      .review-card:hover {
+        transform: translateY(-3px);
+      }
+      .review-text {
+        font-style: italic;
+        color: #555;
+      }
+      .review-author {
+        font-weight: bold;
+        color: #0d6efd;
+        margin-top: 10px;
+      }
+      .footer {
+        background-color: #212529;
+        color: #fff;
+        padding: 40px 0 20px;
+        margin-top: 50px;
+      }
+      .footer a {
+        color: #aaa;
+        text-decoration: none;
+      }
+      .footer a:hover {
+        color: #fff;
+      }
       @media (max-width: 768px) {
         .rounded-ing {
           width: 80%;
@@ -84,6 +128,9 @@
         }
         .display-4 {
           font-size: 2rem;
+        }
+        .contact-item a {
+          font-size: 1rem;
         }
       }
     </style>
@@ -108,7 +155,21 @@
             <li class="nav-item">
               <a class="nav-link" href="#about">О нас</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#reviews">Отзывы</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacts">Контакты</a>
+            </li>
           </ul>
+        </div>
+        <div class="d-none d-lg-block">
+          <a href="tel:+79001234567" class="text-white text-decoration-none">
+            📞 +7 (900) 123-45-67
+          </a>
         </div>
       </div>
     </nav>
@@ -124,12 +185,10 @@
             Работаем как с юр. лицами, так и физ лицами.
           </p>
           
-          <!-- ↓↓↓ КНОПКА ДЛЯ СВЯЗИ - ЗАМЕНИТЕ НА СВОЙ USERNAME ↓↓↓ -->
           <a href="javascript:void(0)" onclick="openTelegram('Lubasha9999')" class="btn btn-primary">
             📱 Для связи
           </a>
           
-          <!-- ↓↓↓ КНОПКА TELEGRAM КАНАЛА - ЗАМЕНИТЕ НА НАЗВАНИЕ КАНАЛА ↓↓↓ -->
           <a href="javascript:void(0)" onclick="openTelegram('love_cleanmoon')" class="btn btn-secondary">
             📢 Телеграмм канал
           </a>
@@ -137,8 +196,6 @@
           <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-success">
             🤖 Написать боту
           </a>
-          <!-- ↑↑↑ КОНЕЦ БЛОКА ССЫЛОК ↑↑↑ -->
-          
         </div>
       </div>
     </div>
@@ -246,8 +303,191 @@
         </div>
       </div>
     </div>
-      <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
+
+    <!-- Блок: Наши услуги -->
+    <div id="services" class="container my-5">
+      <div class="text-center mb-5">
+        <h2 class="display-4">Наши услуги</h2>
+        <p class="lead">Профессиональная уборка для дома и бизнеса</p>
+        <hr class="w-25 mx-auto">
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h3>🏠 Уборка квартир</h3>
+              <p>Поддерживающая, генеральная, после ремонта. Работаем аккуратно и с вниманием к деталям.</p>
+              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h3>🏢 Уборка офисов</h3>
+              <p>Ежедневная, комплексная, поддерживающая чистоту. Не мешаем работе сотрудников.</p>
+              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h3>🧼 Химчистка мебели</h3>
+              <p>Диванов, кресел, ковров. Безопасные средства, быстрое высыхание.</p>
+              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h3>🪟 Мойка окон</h3>
+              <p>Профессиональная мойка окон любой сложности. Чистота без разводов.</p>
+              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h3>🏭 Уборка после ремонта</h3>
+              <p>Удаляем строительную пыль, остатки материалов. Готовим помещение к заселению.</p>
+              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h3>🌿 Эко-уборка</h3>
+              <p>Безопасные гипоаллергенные средства. Идеально для семей с детьми и аллергиков.</p>
+              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Блок: Отзывы клиентов -->
+    <div id="reviews" class="container my-5">
+      <div class="text-center mb-5">
+        <h2 class="display-4">Отзывы наших клиентов</h2>
+        <p class="lead">Что говорят о нас те, кто уже воспользовался нашими услугами</p>
+        <hr class="w-25 mx-auto">
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card review-card h-100 p-3">
+            <div class="card-body">
+              <div class="review-text">
+                <p>"Заказывали генеральную уборку квартиры после ремонта. Ребята приехали вовремя, всё сделали на высшем уровне! Особенно порадовало внимание к деталям — отмыли даже труднодоступные места. Рекомендую!"</p>
+              </div>
+              <div class="review-author">
+                — Анна, Москва
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card review-card h-100 p-3">
+            <div class="card-body">
+              <div class="review-text">
+                <p>"Обратились для регулярной уборки офиса. Очень довольны результатом! Команда работает быстро, качественно, и что важно — не мешает сотрудникам. Цены адекватные, обслуживание на высоте."</p>
+              </div>
+              <div class="review-author">
+                — ООО "ТехноСервис"
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card review-card h-100 p-3">
+            <div class="card-body">
+              <div class="review-text">
+                <p>"Делали химчистку дивана и ковра. Результат превзошел ожидания! Пятна вывели полностью, запаха химии не осталось. Вежливые и аккуратные сотрудники. Спасибо, будем обращаться еще!"</p>
+              </div>
+              <div class="review-author">
+                — Елена, Московская область
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Блок: Контактная информация -->
+    <div id="contacts" class="contact-info">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="display-4">Свяжитесь с нами</h2>
+          <p class="lead">Мы всегда на связи и готовы ответить на ваши вопросы</p>
+          <hr class="w-25 mx-auto">
+        </div>
+        <div class="row">
+          <div class="col-md-4 text-center contact-item">
+            <h4>📞 Телефон</h4>
+            <a href="tel:+79656531941">+7 (965) 653-19-41</a>
+          </div>
+          <div class="col-md-4 text-center contact-item">
+            <h4>✉️ Email</h4>
+            <a href="mailto:plotnikovalubov121@gmail.com">plotnikovalubov121@gmail.com</a>
+          </div>
+          <div class="col-md-4 text-center contact-item">
+            <h4>📍 Районы работы</h4>
+            <p>Москва и Московская область</p>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <a href="javascript:void(0)" onclick="openTelegram('Lubasha9999')" class="btn btn-primary mx-2">
+              📱 Написать в Telegram
+            </a>
+            <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-success mx-2">
+              🤖 Написать боту
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Подвал сайта -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center text-md-start mb-3">
+            <h5>Клининговая компания "С Любовью"</h5>
+            <p class="small">Профессиональная уборка с заботой о вас и вашем доме</p>
+          </div>
+          <div class="col-md-4 text-center mb-3">
+            <h5>Навигация</h5>
+            <ul class="list-unstyled">
+              <li><a href="/">Главная</a></li>
+              <li><a href="prace.html">Прайс-лист</a></li>
+              <li><a href="#about">О нас</a></li>
+              <li><a href="#services">Услуги</a></li>
+              <li><a href="#reviews">Отзывы</a></li>
+              <li><a href="#contacts">Контакты</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 text-center text-md-end mb-3">
+            <h5>Контакты</h5>
+            <p><a href="tel:+79656531941">+7 (965) 653-19-41</a></p>
+            <p><a href="mailto:plotnikovalubov121@gmail.com">plotnikovalubov121@gmail.com</a></p>
+            <p><a href="javascript:void(0)" onclick="openTelegram('love_cleanmoon')">Наш Telegram канал</a></p>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <hr class="bg-secondary">
+            <p class="small mb-0">© 2026 Клининговая компания "С Любовью". Все права защищены.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
       (function(m,e,t,r,i,k,a){
           m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
           m[i].l=1*new Date();
@@ -261,9 +501,9 @@
           accurateTrackBounce:true,
           webvisor:true
       });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/108207850" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108207850" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     
   </body>
 </html>
