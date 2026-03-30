@@ -10,17 +10,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; }
         .navbar { background: rgba(33, 37, 41, 0.95) !important; backdrop-filter: blur(10px); }
-        .rounded-ing { width: 60%; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.5); padding: 3em; margin-bottom: 2em; background: white; }
+        .rounded-ing { width: 200px; height: 200px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; margin: 0 auto; }
         .timeline { position: relative; padding: 20px 0; }
-        .timeline-item { margin-bottom: 30px; position: relative; }
+        .timeline-item { margin-bottom: 30px; }
         .timeline-year { font-weight: bold; font-size: 1.5rem; color: #0d6efd; }
-        .company-card { transition: transform 0.3s; margin-bottom: 20px; background: white; border-radius: 15px; }
+        .company-card { transition: transform 0.3s; margin-bottom: 20px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
         .company-card:hover { transform: translateY(-5px); }
         .values-section { background-color: #f8f9fa; padding: 50px 0; margin-top: 50px; border-radius: 20px; }
         .contact-info { background-color: #e9ecef; padding: 30px 0; margin-top: 50px; }
         .contact-item { margin-bottom: 15px; }
         .contact-item a { text-decoration: none; color: #0d6efd; font-size: 1.1rem; }
-        .review-card { background-color: #fff; border-left: 4px solid #0d6efd; transition: transform 0.3s; border-radius: 10px; }
+        .review-card { background-color: #fff; border-left: 4px solid #0d6efd; transition: transform 0.3s; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .review-card:hover { transform: translateY(-3px); }
         .review-text { font-style: italic; color: #555; }
         .review-author { font-weight: bold; color: #0d6efd; margin-top: 10px; }
@@ -28,7 +28,7 @@
         .footer a { color: #aaa; text-decoration: none; }
         .footer a:hover { color: #fff; }
         
-        /* Стили для корзины */
+        /* Корзина */
         .cart-sidebar { position: fixed; right: -400px; top: 0; width: 400px; height: 100vh; background: white; box-shadow: -5px 0 30px rgba(0,0,0,0.3); transition: right 0.3s ease; z-index: 1000; display: flex; flex-direction: column; }
         .cart-sidebar.open { right: 0; }
         .cart-header { padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; display: flex; justify-content: space-between; align-items: center; }
@@ -40,7 +40,7 @@
         .cart-item-name { font-weight: 500; }
         .cart-item-details { font-size: 12px; color: #666; }
         .cart-item-price { font-weight: bold; color: #667eea; }
-        .remove-item { background: none; border: none; color: #ff4757; cursor: pointer; margin-left: 10px; font-size: 16px; }
+        .remove-item { background: none; border: none; color: #ff4757; cursor: pointer; margin-left: 10px; }
         .cart-footer { padding: 20px; border-top: 1px solid #eee; background: #f8f9fa; }
         .cart-total { font-size: 20px; font-weight: bold; margin-bottom: 15px; text-align: center; }
         .checkout-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; }
@@ -51,31 +51,25 @@
         .checkout-form { background: white; border-radius: 20px; max-width: 500px; width: 90%; padding: 30px; }
         .checkout-form h3 { margin-bottom: 20px; color: #333; }
         .form-group { margin-bottom: 15px; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
         .submit-order { width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; margin-top: 10px; }
         .service-card { background: white; border-radius: 15px; padding: 20px; margin-bottom: 20px; transition: transform 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.08); height: 100%; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .service-card:hover { transform: translateY(-5px); }
         .service-card h3 { font-size: 20px; margin-bottom: 10px; }
         .service-price { font-size: 24px; font-weight: bold; color: #667eea; margin: 15px 0; }
         .service-input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 10px; margin: 10px 0; }
-        .add-to-cart { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 10px; border-radius: 10px; width: 100%; cursor: pointer; transition: opacity 0.3s; }
-        .add-to-cart:hover { opacity: 0.9; }
+        .add-to-cart { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 10px; border-radius: 10px; width: 100%; cursor: pointer; }
         .toast-notification { position: fixed; bottom: 20px; right: 20px; background: #28a745; color: white; padding: 12px 24px; border-radius: 10px; z-index: 1200; display: none; }
-        .btn-primary-custom { background: linear-gradient(135deg, #667eea, #764ba2); border: none; }
         .section-title { text-align: center; margin-bottom: 40px; }
         .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
         .section-title hr { width: 80px; height: 3px; background: linear-gradient(135deg, #667eea, #764ba2); margin: 15px auto; border: none; }
-        @media (max-width: 768px) { .rounded-ing { width: 80%; padding: 2em; } .cart-sidebar { width: 100%; right: -100%; } .section-title h2 { font-size: 1.8rem; } }
+        @media (max-width: 768px) { .cart-sidebar { width: 100%; right: -100%; } .section-title h2 { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
-    <!-- Навигация -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-heart" style="color: #ff6b6b;"></i>
-                <span class="ms-2">Клининг С Любовью</span>
-            </a>
+            <a class="navbar-brand" href="#"><i class="fas fa-heart" style="color: #ff6b6b;"></i><span class="ms-2">Клининг С Любовью</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -87,104 +81,63 @@
                     <li class="nav-item"><a class="nav-link" href="#reviews">Отзывы</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
                 </ul>
-                <button class="cart-btn ms-3" id="cartBtn">
-                    🛒 Корзина <span id="cartCount" class="cart-count">0</span>
-                </button>
+                <button class="cart-btn ms-3" id="cartBtn">🛒 Корзина <span id="cartCount" class="cart-count">0</span></button>
             </div>
         </div>
     </nav>
-
     <div style="margin-top: 76px;"></div>
 
     <!-- Главный слайд -->
     <div class="container text-center my-5">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <div class="rounded-ing mx-auto d-flex align-items-center justify-content-center" style="width: 200px; height: 200px; background: linear-gradient(135deg, #667eea, #764ba2);">
-                    <i class="fas fa-hand-sparkles fa-4x text-white"></i>
-                </div>
+                <div class="rounded-ing mx-auto"><i class="fas fa-hand-sparkles fa-4x text-white"></i></div>
                 <h1 class="display-4 fw-bold mt-4">Клининговая компания <span style="color: #667eea;">с Любовью</span></h1>
-                <p class="lead text-muted mt-3">
-                    Профессиональная уборка квартир, домов и офисов. Работаем с любовью к чистоте!
-                </p>
+                <p class="lead text-muted mt-3">Профессиональная уборка квартир, домов и офисов. Работаем с любовью к чистоте!</p>
                 <div class="mt-4">
                     <a href="https://t.me/Lubasha9999" target="_blank" class="btn btn-primary me-2 btn-lg">📱 Для связи</a>
                     <a href="https://t.me/love_cleanmoon" target="_blank" class="btn btn-secondary me-2 btn-lg">📢 Telegram канал</a>
-                    <a href="https://t.me/LoveCleanBot" target="_blank" class="btn btn-success btn-lg">🤖 Наш бот</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Услуги с корзиной -->
+    <!-- Услуги -->
     <div id="services" class="container my-5">
-        <div class="section-title">
-            <h2>Наши услуги</h2>
-            <p class="lead">Выберите услугу и добавьте в корзину</p>
-            <hr>
-        </div>
+        <div class="section-title"><h2>Наши услуги</h2><p class="lead">Выберите услугу и добавьте в корзину</p><hr></div>
         <div class="row" id="servicesGrid"></div>
     </div>
 
     <!-- Прайс-лист -->
     <div id="prices" class="container my-5">
-        <div class="section-title">
-            <h2>Прайс-лист</h2>
-            <p class="lead">Стоимость наших услуг</p>
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col-md-8 mx-auto">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-0">
-                        <table class="table table-hover mb-0">
-                            <thead class="table-light">
-                                <tr><th>Услуга</th><th class="text-end">Цена</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>🧹 Генеральная уборка</td><td class="text-end">120 ₽/м²</td></tr>
-                                <tr><td>🪟 Мойка окон</td><td class="text-end">350 ₽/створка</td></tr>
-                                <tr><td>🌿 ЭКО уборка</td><td class="text-end">150 ₽/м²</td></tr>
-                                <tr><td>🏗️ После строительства</td><td class="text-end">180 ₽/м²</td></tr>
-                                <tr><td>💨 Озонирование</td><td class="text-end">500 ₽/м²</td></tr>
-                                <tr><td>🧼 Химчистка ковра</td><td class="text-end">200 ₽/м²</td></tr>
-                                <tr><td>🛏️ Химчистка матраса</td><td class="text-end">2500 ₽/шт</td></tr>
-                                <tr><td>🪑 Химчистка кресла</td><td class="text-end">1500 ₽/шт</td></tr>
-                                <tr><td>💺 Химчистка стульев</td><td class="text-end">500 ₽/шт</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="section-title"><h2>Прайс-лист</h2><p class="lead">Стоимость наших услуг</p><hr></div>
+        <div class="row"><div class="col-md-8 mx-auto"><div class="card shadow-sm border-0"><div class="card-body p-0"><table class="table table-hover mb-0"><thead class="table-light"><tr><th>Услуга</th><th class="text-end">Цена</th></tr></thead><tbody>
+            <tr><td>🧹 Генеральная уборка</td><td class="text-end">120 ₽/м²</td></tr>
+            <tr><td>🪟 Мойка окон</td><td class="text-end">350 ₽/створка</td></tr>
+            <tr><td>🌿 ЭКО уборка</td><td class="text-end">150 ₽/м²</td></tr>
+            <tr><td>🏗️ После строительства</td><td class="text-end">180 ₽/м²</td></tr>
+            <tr><td>💨 Озонирование</td><td class="text-end">500 ₽/м²</td></tr>
+            <tr><td>🧼 Химчистка ковра</td><td class="text-end">200 ₽/м²</td></tr>
+            <tr><td>🛏️ Химчистка матраса</td><td class="text-end">2500 ₽/шт</td></tr>
+            <tr><td>🪑 Химчистка кресла</td><td class="text-end">1500 ₽/шт</td></tr>
+            <tr><td>💺 Химчистка стульев</td><td class="text-end">500 ₽/шт</td></tr>
+        </tbody></table></div></div></div></div>
     </div>
 
     <!-- О нас -->
     <div id="about" class="container my-5">
-        <div class="section-title">
-            <h2>О нашей компании</h2>
-            <p class="lead">История развития и наши ценности</p>
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="timeline">
-                    <div class="timeline-item"><div class="card company-card border-0 shadow-sm"><div class="card-body"><div class="timeline-year">2020</div><h5>Основание компании</h5><p>Компания "С Любовью" начала свой путь с небольшой команды из 3 человек, которые верили в чистоту и качество.</p></div></div></div>
-                    <div class="timeline-item"><div class="card company-card border-0 shadow-sm"><div class="card-body"><div class="timeline-year">2022</div><h5>Расширение команды</h5><p>Команда выросла до 15 профессиональных клинеров. Добавили новые услуги: химчистку и эко-уборку.</p></div></div></div>
-                    <div class="timeline-item"><div class="card company-card border-0 shadow-sm"><div class="card-body"><div class="timeline-year">2024</div><h5>Новый уровень</h5><p>Начали сотрудничество с крупными компаниями. Внедрили систему контроля качества.</p></div></div></div>
-                    <div class="timeline-item"><div class="card company-card border-0 shadow-sm"><div class="card-body"><div class="timeline-year">2026</div><h5>Сегодня</h5><p>Мы - команда из 30+ профессионалов. Наша миссия - делать мир чище с любовью.</p></div></div></div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="values-section rounded">
-            <div class="row text-center">
-                <div class="col-md-4 mb-4"><div class="card h-100 border-0 bg-transparent shadow-sm"><div class="card-body"><i class="fas fa-star fa-3x text-primary mb-3"></i><h4>❤️ Качество</h4><p>Профессиональные средства и оборудование</p></div></div></div>
-                <div class="col-md-4 mb-4"><div class="card h-100 border-0 bg-transparent shadow-sm"><div class="card-body"><i class="fas fa-leaf fa-3x text-primary mb-3"></i><h4>🌱 Эко-подход</h4><p>Безопасные для здоровья средства</p></div></div></div>
-                <div class="col-md-4 mb-4"><div class="card h-100 border-0 bg-transparent shadow-sm"><div class="card-body"><i class="fas fa-handshake fa-3x text-primary mb-3"></i><h4>🤝 Надежность</h4><p>Гарантия качества и индивидуальный подход</p></div></div></div>
-            </div>
-        </div>
-        
+        <div class="section-title"><h2>О нашей компании</h2><p class="lead">История развития и наши ценности</p><hr></div>
+        <div class="row"><div class="col-12"><div class="timeline">
+            <div class="timeline-item"><div class="card company-card border-0"><div class="card-body"><div class="timeline-year">2020</div><h5>Основание компании</h5><p>Начали с команды из 3 человек</p></div></div></div>
+            <div class="timeline-item"><div class="card company-card border-0"><div class="card-body"><div class="timeline-year">2022</div><h5>Расширение</h5><p>Команда выросла до 15 профессионалов</p></div></div></div>
+            <div class="timeline-item"><div class="card company-card border-0"><div class="card-body"><div class="timeline-year">2024</div><h5>Новый уровень</h5><p>Сотрудничество с крупными компаниями</p></div></div></div>
+            <div class="timeline-item"><div class="card company-card border-0"><div class="card-body"><div class="timeline-year">2026</div><h5>Сегодня</h5><p>30+ профессионалов, 500+ клиентов</p></div></div></div>
+        </div></div></div>
+        <div class="values-section rounded"><div class="row text-center">
+            <div class="col-md-4 mb-4"><div class="card h-100 border-0 bg-transparent"><div class="card-body"><i class="fas fa-star fa-3x text-primary mb-3"></i><h4>❤️ Качество</h4><p>Профессиональные средства</p></div></div></div>
+            <div class="col-md-4 mb-4"><div class="card h-100 border-0 bg-transparent"><div class="card-body"><i class="fas fa-leaf fa-3x text-primary mb-3"></i><h4>🌱 Эко-подход</h4><p>Безопасные средства</p></div></div></div>
+            <div class="col-md-4 mb-4"><div class="card h-100 border-0 bg-transparent"><div class="card-body"><i class="fas fa-handshake fa-3x text-primary mb-3"></i><h4>🤝 Надежность</h4><p>Гарантия качества</p></div></div></div>
+        </div></div>
         <div class="row text-center mt-5">
             <div class="col-md-3 col-6 mb-3"><h3 class="text-primary">500+</h3><p>Довольных клиентов</p></div>
             <div class="col-md-3 col-6 mb-3"><h3 class="text-primary">30+</h3><p>Профессионалов</p></div>
@@ -195,51 +148,32 @@
 
     <!-- Отзывы -->
     <div id="reviews" class="container my-5">
-        <div class="section-title">
-            <h2>Отзывы наших клиентов</h2>
-            <p class="lead">Что говорят о нас</p>
-            <hr>
-        </div>
+        <div class="section-title"><h2>Отзывы клиентов</h2><hr></div>
         <div class="row">
-            <div class="col-md-4 mb-4"><div class="card review-card h-100 p-4 shadow-sm"><div class="card-body p-0"><i class="fas fa-quote-left fa-2x text-primary mb-3 opacity-50"></i><div class="review-text"><p>"Заказывали генеральную уборку квартиры после ремонта. Ребята приехали вовремя, всё сделали на высшем уровне! Рекомендую!"</p></div><div class="review-author">— Анна, Москва</div></div></div></div>
-            <div class="col-md-4 mb-4"><div class="card review-card h-100 p-4 shadow-sm"><div class="card-body p-0"><i class="fas fa-quote-left fa-2x text-primary mb-3 opacity-50"></i><div class="review-text"><p>"Обратились для регулярной уборки офиса. Очень довольны результатом! Команда работает быстро и качественно."</p></div><div class="review-author">— ООО "ТехноСервис"</div></div></div></div>
-            <div class="col-md-4 mb-4"><div class="card review-card h-100 p-4 shadow-sm"><div class="card-body p-0"><i class="fas fa-quote-left fa-2x text-primary mb-3 opacity-50"></i><div class="review-text"><p>"Делали химчистку дивана и ковра. Результат превзошел ожидания! Пятна вывели полностью. Спасибо!"</p></div><div class="review-author">— Елена, Московская область</div></div></div></div>
+            <div class="col-md-4 mb-4"><div class="card review-card h-100 p-4"><div class="card-body p-0"><i class="fas fa-quote-left fa-2x text-primary mb-3 opacity-50"></i><div class="review-text"><p>"Всё сделали на высшем уровне! Рекомендую!"</p></div><div class="review-author">— Анна, Москва</div></div></div></div>
+            <div class="col-md-4 mb-4"><div class="card review-card h-100 p-4"><div class="card-body p-0"><i class="fas fa-quote-left fa-2x text-primary mb-3 opacity-50"></i><div class="review-text"><p>"Очень довольны результатом! Работают быстро и качественно."</p></div><div class="review-author">— ООО "ТехноСервис"</div></div></div></div>
+            <div class="col-md-4 mb-4"><div class="card review-card h-100 p-4"><div class="card-body p-0"><i class="fas fa-quote-left fa-2x text-primary mb-3 opacity-50"></i><div class="review-text"><p>"Результат превзошел ожидания! Спасибо!"</p></div><div class="review-author">— Елена, МО</div></div></div></div>
         </div>
     </div>
 
     <!-- Контакты -->
     <div id="contacts" class="contact-info">
         <div class="container">
-            <div class="section-title">
-                <h2>Свяжитесь с нами</h2>
-                <p class="lead">Мы всегда на связи и готовы ответить на ваши вопросы</p>
-                <hr>
-            </div>
+            <div class="section-title"><h2>Свяжитесь с нами</h2><hr></div>
             <div class="row">
                 <div class="col-md-4 text-center contact-item"><i class="fas fa-phone fa-2x text-primary mb-2"></i><h4>📞 Телефон</h4><a href="tel:+79656531941">+7 (965) 653-19-41</a></div>
                 <div class="col-md-4 text-center contact-item"><i class="fas fa-envelope fa-2x text-primary mb-2"></i><h4>✉️ Email</h4><a href="mailto:kirill0606kira@yandex.ru">kirill0606kira@yandex.ru</a></div>
                 <div class="col-md-4 text-center contact-item"><i class="fas fa-map-marker-alt fa-2x text-primary mb-2"></i><h4>📍 Районы работы</h4><p>Москва и Московская область</p></div>
             </div>
-            <div class="row mt-4">
-                <div class="col-12 text-center">
-                    <a href="https://t.me/Lubasha9999" target="_blank" class="btn btn-primary btn-lg mx-2"><i class="fab fa-telegram"></i> Написать в Telegram</a>
-                    <a href="https://t.me/LoveCleanBot" target="_blank" class="btn btn-success btn-lg mx-2"><i class="fab fa-telegram"></i> Наш бот</a>
-                </div>
-            </div>
+            <div class="row mt-4"><div class="col-12 text-center"><a href="https://t.me/Lubasha9999" target="_blank" class="btn btn-primary btn-lg mx-2"><i class="fab fa-telegram"></i> Написать в Telegram</a></div></div>
         </div>
     </div>
 
     <!-- Подвал -->
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 text-center text-md-start mb-3"><h5><i class="fas fa-heart text-danger"></i> Клининг "С Любовью"</h5><p class="small">Профессиональная уборка с заботой о вас и вашем доме</p></div>
-                <div class="col-md-4 text-center mb-3"><h5>Навигация</h5><ul class="list-unstyled"><li><a href="#services">Услуги</a></li><li><a href="#prices">Прайс-лист</a></li><li><a href="#about">О нас</a></li><li><a href="#reviews">Отзывы</a></li><li><a href="#contacts">Контакты</a></li></ul></div>
-                <div class="col-md-4 text-center text-md-end mb-3"><h5>Контакты</h5><p><a href="tel:+79656531941"><i class="fas fa-phone"></i> +7 (965) 653-19-41</a></p><p><a href="mailto:kirill0606kira@yandex.ru"><i class="fas fa-envelope"></i> kirill0606kira@yandex.ru</a></p><p><a href="https://t.me/love_cleanmoon" target="_blank"><i class="fab fa-telegram"></i> Telegram канал</a></p></div>
-            </div>
-            <div class="row mt-3"><div class="col-12 text-center"><hr class="bg-secondary"><p class="small mb-0">© 2026 Клининговая компания "С Любовью". Все права защищены.</p></div></div>
-        </div>
-    </div>
+    <div class="footer"><div class="container"><div class="row"><div class="col-md-4 text-center text-md-start mb-3"><h5><i class="fas fa-heart text-danger"></i> Клининг "С Любовью"</h5><p class="small">Профессиональная уборка с заботой о вас</p></div>
+    <div class="col-md-4 text-center mb-3"><h5>Навигация</h5><ul class="list-unstyled"><li><a href="#services">Услуги</a></li><li><a href="#prices">Прайс-лист</a></li><li><a href="#about">О нас</a></li><li><a href="#reviews">Отзывы</a></li><li><a href="#contacts">Контакты</a></li></ul></div>
+    <div class="col-md-4 text-center text-md-end mb-3"><h5>Контакты</h5><p><a href="tel:+79656531941"><i class="fas fa-phone"></i> +7 (965) 653-19-41</a></p><p><a href="mailto:kirill0606kira@yandex.ru"><i class="fas fa-envelope"></i> kirill0606kira@yandex.ru</a></p></div></div>
+    <div class="row mt-3"><div class="col-12 text-center"><hr class="bg-secondary"><p class="small mb-0">© 2026 Клининговая компания "С Любовью". Все права защищены.</p></div></div></div></div>
 
     <!-- Корзина -->
     <div id="cartSidebar" class="cart-sidebar">
@@ -248,29 +182,24 @@
         <div class="cart-footer"><div class="cart-total" id="cartTotal">Итого: 0₽</div><button class="checkout-btn" onclick="openCheckout()">Оформить заказ</button></div>
     </div>
 
-    <!-- Модальное окно оформления -->
+    <!-- Модальное окно -->
     <div id="checkoutModal" class="checkout-modal">
         <div class="checkout-form">
             <h3><i class="fas fa-clipboard-list"></i> Оформление заказа</h3>
             <div class="form-group"><input type="text" id="clientName" class="form-control" placeholder="Ваше имя *" required></div>
             <div class="form-group"><input type="tel" id="clientPhone" class="form-control" placeholder="Телефон *" required></div>
             <div class="form-group"><input type="text" id="clientAddress" class="form-control" placeholder="Адрес *" required></div>
-            <div class="form-group"><textarea id="clientComment" class="form-control" rows="3" placeholder="Комментарий к заказу"></textarea></div>
+            <div class="form-group"><textarea id="clientComment" class="form-control" rows="3" placeholder="Комментарий"></textarea></div>
             <button type="button" class="submit-order" onclick="submitOrder()"><i class="fas fa-paper-plane"></i> Отправить заказ</button>
             <button class="btn btn-secondary w-100 mt-2" onclick="closeCheckout()">Отмена</button>
         </div>
     </div>
-
     <div id="toast" class="toast-notification">✅ Добавлено в корзину!</div>
 
     <script>
-        // ========== НАСТРОЙКИ ==========
-        // Токен бота персонала (для отправки заказов менеджеру)
-        const BOT_TOKEN = "8627698705:AAFAKWoR0iqUmED3bDQQknZN6w6yd_6s0k0";
-        // ID менеджера (можно оставить пустым, тогда заказы будут видны всем, кто пишет боту)
-        const MANAGER_ID = "1426855811"; // Замените на ваш Telegram ID
+        // НАСТРОЙКА - ваша почта
+        const YOUR_EMAIL = "kirill0606kira@yandex.ru";
         
-        // Услуги
         const services = [
             { id: "general", name: "Генеральная уборка", pricePerUnit: 120, unit: "м²", icon: "🧹" },
             { id: "windows", name: "Мойка окон", pricePerUnit: 350, unit: "створка", icon: "🪟" },
@@ -289,260 +218,89 @@
 
         let cart = [];
 
-        // ========== ФУНКЦИИ КОРЗИНЫ ==========
-        function loadCart() {
-            const saved = localStorage.getItem('cleaning_cart');
-            if (saved) {
-                try {
-                    cart = JSON.parse(saved);
-                    updateCartUI();
-                } catch(e) { console.error('Ошибка загрузки корзины:', e); }
-            }
-        }
-
-        function saveCart() {
-            localStorage.setItem('cleaning_cart', JSON.stringify(cart));
-        }
-
-        function addToCart(serviceName, quantity, unit, price, details) {
-            cart.push({
-                id: Date.now(),
-                name: serviceName,
-                quantity: quantity,
-                unit: unit,
-                price: price,
-                details: details,
-                total: price
-            });
-            saveCart();
-            updateCartUI();
-            showToast();
-        }
-
-        function removeFromCart(itemId) {
-            cart = cart.filter(item => item.id !== itemId);
-            saveCart();
-            updateCartUI();
-        }
-
+        function loadCart() { const saved = localStorage.getItem('cleaning_cart'); if (saved) { try { cart = JSON.parse(saved); updateCartUI(); } catch(e) {} } }
+        function saveCart() { localStorage.setItem('cleaning_cart', JSON.stringify(cart)); }
+        function addToCart(name, qty, unit, price, details) { cart.push({ id: Date.now(), name, qty, unit, price, details, total: price }); saveCart(); updateCartUI(); showToast(); }
+        function removeFromCart(id) { cart = cart.filter(item => item.id !== id); saveCart(); updateCartUI(); }
         function updateCartUI() {
-            const cartItemsDiv = document.getElementById('cartItems');
-            const cartCountSpan = document.getElementById('cartCount');
-            const cartTotalDiv = document.getElementById('cartTotal');
-            
+            const itemsDiv = document.getElementById('cartItems');
+            const countSpan = document.getElementById('cartCount');
+            const totalDiv = document.getElementById('cartTotal');
             let total = 0;
-            cartItemsDiv.innerHTML = '';
-            
-            if (cart.length === 0) {
-                cartItemsDiv.innerHTML = '<div class="text-center text-muted">Корзина пуста</div>';
-            } else {
-                cart.forEach(item => {
-                    total += item.total;
-                    cartItemsDiv.innerHTML += `
-                        <div class="cart-item">
-                            <div class="cart-item-info">
-                                <div class="cart-item-name">${escapeHtml(item.name)}</div>
-                                <div class="cart-item-details">${escapeHtml(item.details)}</div>
-                            </div>
-                            <div class="cart-item-price">${item.total}₽</div>
-                            <button class="remove-item" onclick="removeFromCart(${item.id})">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
-                });
-            }
-            
-            cartCountSpan.textContent = cart.length;
-            cartTotalDiv.textContent = `Итого: ${total}₽`;
+            itemsDiv.innerHTML = '';
+            if (cart.length === 0) itemsDiv.innerHTML = '<div class="text-center text-muted">Корзина пуста</div>';
+            else cart.forEach(item => { total += item.total; itemsDiv.innerHTML += `<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">${item.name}</div><div class="cart-item-details">${item.details}</div></div><div class="cart-item-price">${item.total}₽</div><button class="remove-item" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button></div>`; });
+            countSpan.textContent = cart.length;
+            totalDiv.textContent = `Итого: ${total}₽`;
         }
-
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 2000);
-        }
-
+        function showToast() { const toast = document.getElementById('toast'); toast.style.display = 'block'; setTimeout(() => { toast.style.display = 'none'; }, 2000); }
         function openCart() { document.getElementById('cartSidebar').classList.add('open'); }
         function closeCart() { document.getElementById('cartSidebar').classList.remove('open'); }
-        
-        function openCheckout() {
-            if (cart.length === 0) {
-                alert('Корзина пуста!');
-                return;
-            }
-            document.getElementById('checkoutModal').classList.add('active');
-        }
-        
+        function openCheckout() { if (cart.length === 0) { alert('Корзина пуста!'); return; } document.getElementById('checkoutModal').classList.add('active'); }
         function closeCheckout() { document.getElementById('checkoutModal').classList.remove('active'); }
-
-        // ========== ОТПРАВКА ЗАКАЗА ==========
-        async function submitOrder() {
+        
+        function submitOrder() {
             const name = document.getElementById('clientName').value.trim();
             const phone = document.getElementById('clientPhone').value.trim();
             const address = document.getElementById('clientAddress').value.trim();
             const comment = document.getElementById('clientComment').value.trim();
-            
-            if (!name || !phone || !address) {
-                alert('Заполните имя, телефон и адрес!');
-                return;
-            }
+            if (!name || !phone || !address) { alert('Заполните имя, телефон и адрес!'); return; }
             
             const total = cart.reduce((sum, item) => sum + item.total, 0);
-            
-            // Формируем текст заказа
             let orderText = `🆕 НОВЫЙ ЗАКАЗ С САЙТА\n\n`;
-            orderText += `👤 Имя: ${name}\n`;
-            orderText += `📞 Телефон: ${phone}\n`;
-            orderText += `🏠 Адрес: ${address}\n`;
-            orderText += `📝 Комментарий: ${comment || 'нет'}\n\n`;
+            orderText += `👤 Имя: ${name}\n📞 Телефон: ${phone}\n🏠 Адрес: ${address}\n📝 Комментарий: ${comment || 'нет'}\n\n`;
             orderText += `📦 Услуги:\n`;
-            cart.forEach((item, i) => {
-                orderText += `${i+1}. ${item.name}: ${item.details} = ${item.total}₽\n`;
-            });
-            orderText += `\n💰 ИТОГО: ${total}₽\n`;
-            orderText += `⏰ ${new Date().toLocaleString('ru-RU')}`;
+            cart.forEach((item, i) => { orderText += `${i+1}. ${item.name}: ${item.details} = ${item.total}₽\n`; });
+            orderText += `\n💰 ИТОГО: ${total}₽\n⏰ ${new Date().toLocaleString('ru-RU')}`;
             
-            // Отправка в Telegram бота (менеджеру)
-            let telegramSent = false;
+            // Отправка на почту через mailto
+            const subject = encodeURIComponent(`Новый заказ от ${name}`);
+            const body = encodeURIComponent(orderText);
+            window.location.href = `mailto:${YOUR_EMAIL}?subject=${subject}&body=${body}`;
             
-            // Отправляем менеджеру по ID
-            if (MANAGER_ID) {
-                try {
-                    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            chat_id: MANAGER_ID,
-                            text: orderText,
-                            parse_mode: 'HTML'
-                        })
-                    });
-                    if (response.ok) telegramSent = true;
-                } catch(e) { console.error('Telegram send error:', e); }
-            }
+            alert('✅ Заказ отправлен! Откроется окно почты. Просто нажмите "Отправить".');
             
-            // Также отправляем в бота (чтобы заказ попал в new_orders.json)
-            try {
-                // Отправляем сообщение самому боту
-                const response2 = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: BOT_TOKEN.split(':')[0],
-                        text: orderText
-                    })
-                });
-                if (response2.ok) telegramSent = true;
-            } catch(e) { console.error('Telegram send to bot error:', e); }
-            
-            if (telegramSent) {
-                alert('✅ Заказ отправлен! Менеджер свяжется с вами в ближайшее время.');
-            } else {
-                alert('⚠️ Заказ сохранен, но не отправлен в Telegram. Менеджер свяжется с вами по телефону.');
-            }
-            
-            // Очищаем корзину и форму
-            cart = [];
-            saveCart();
-            updateCartUI();
-            closeCheckout();
-            closeCart();
-            
+            cart = []; saveCart(); updateCartUI(); closeCheckout(); closeCart();
             document.getElementById('clientName').value = '';
             document.getElementById('clientPhone').value = '';
             document.getElementById('clientAddress').value = '';
             document.getElementById('clientComment').value = '';
         }
 
-        // ========== ОТРИСОВКА УСЛУГ ==========
         function renderServices() {
             const grid = document.getElementById('servicesGrid');
-            if (!grid) return;
             grid.innerHTML = '';
-            
             services.forEach(service => {
-                const col = document.createElement('div');
-                col.className = 'col-md-4 mb-4';
-                col.innerHTML = `
-                    <div class="service-card">
-                        <h3>${service.icon} ${service.name}</h3>
-                        <div class="service-price">${service.pricePerUnit}₽ / ${service.unit}</div>
-                        <input type="number" id="qty_${service.id}" class="service-input" placeholder="Введите ${service.unit}" min="1" value="1">
-                        <button class="add-to-cart" onclick="addServiceToCart('${service.id}', '${service.name}', ${service.pricePerUnit}, '${service.unit}')">
-                            <i class="fas fa-cart-plus"></i> Добавить в корзину
-                        </button>
-                    </div>
-                `;
+                const col = document.createElement('div'); col.className = 'col-md-4 mb-4';
+                col.innerHTML = `<div class="service-card"><h3>${service.icon} ${service.name}</h3><div class="service-price">${service.pricePerUnit}₽ / ${service.unit}</div><input type="number" id="qty_${service.id}" class="service-input" placeholder="Введите ${service.unit}" min="1" value="1"><button class="add-to-cart" onclick="addServiceToCart('${service.id}', '${service.name}', ${service.pricePerUnit}, '${service.unit}')"><i class="fas fa-cart-plus"></i> Добавить в корзину</button></div>`;
                 grid.appendChild(col);
             });
-            
-            // Химчистка
-            const chemicalCol = document.createElement('div');
-            chemicalCol.className = 'col-md-4 mb-4';
-            chemicalCol.innerHTML = `
-                <div class="service-card">
-                    <h3>🧼 Химчистка</h3>
-                    <div class="service-price">от 500₽</div>
-                    <select id="chemicalSelect" class="service-input">
-                        ${chemicalItems.map(item => `<option value="${item.id}">${item.name}${item.pricePerSqm ? ` (${item.pricePerSqm}₽/м²)` : ` (${item.price}₽/шт)`}</option>`).join('')}
-                    </select>
-                    <input type="number" id="chemicalQty" class="service-input" placeholder="Введите количество" min="1" value="1">
-                    <button class="add-to-cart" onclick="addChemicalToCart()">
-                        <i class="fas fa-cart-plus"></i> Добавить в корзину
-                    </button>
-                </div>
-            `;
+            const chemicalCol = document.createElement('div'); chemicalCol.className = 'col-md-4 mb-4';
+            chemicalCol.innerHTML = `<div class="service-card"><h3>🧼 Химчистка</h3><div class="service-price">от 500₽</div><select id="chemicalSelect" class="service-input">${chemicalItems.map(item => `<option value="${item.id}">${item.name}${item.pricePerSqm ? ` (${item.pricePerSqm}₽/м²)` : ` (${item.price}₽/шт)`}</option>`).join('')}</select><input type="number" id="chemicalQty" class="service-input" placeholder="Введите количество" min="1" value="1"><button class="add-to-cart" onclick="addChemicalToCart()"><i class="fas fa-cart-plus"></i> Добавить в корзину</button></div>`;
             grid.appendChild(chemicalCol);
         }
         
-        function addServiceToCart(serviceId, serviceName, pricePerUnit, unit) {
-            const qtyInput = document.getElementById(`qty_${serviceId}`);
-            let quantity = parseFloat(qtyInput.value);
-            if (isNaN(quantity) || quantity <= 0) quantity = 1;
-            const totalPrice = pricePerUnit * quantity;
-            const details = `${quantity} ${unit}`;
-            addToCart(serviceName, quantity, unit, totalPrice, details);
-            qtyInput.value = 1;
+        function addServiceToCart(id, name, price, unit) {
+            const qty = parseFloat(document.getElementById(`qty_${id}`).value) || 1;
+            const total = price * qty;
+            addToCart(name, qty, unit, total, `${qty} ${unit}`);
+            document.getElementById(`qty_${id}`).value = 1;
         }
         
         function addChemicalToCart() {
             const select = document.getElementById('chemicalSelect');
-            const selectedId = select.value;
-            const item = chemicalItems.find(i => i.id === selectedId);
-            const qtyInput = document.getElementById('chemicalQty');
-            let quantity = parseFloat(qtyInput.value);
-            if (isNaN(quantity) || quantity <= 0) quantity = 1;
-            
-            let totalPrice, details;
-            if (item.pricePerSqm) {
-                totalPrice = item.pricePerSqm * quantity;
-                details = `${item.name}: ${quantity} м² = ${totalPrice}₽`;
-            } else {
-                totalPrice = item.price * quantity;
-                details = `${item.name}: ${quantity} шт = ${totalPrice}₽`;
-            }
-            
-            addToCart(`Химчистка - ${item.name}`, quantity, item.pricePerSqm ? 'м²' : 'шт', totalPrice, details);
-            qtyInput.value = 1;
+            const item = chemicalItems.find(i => i.id === select.value);
+            const qty = parseFloat(document.getElementById('chemicalQty').value) || 1;
+            let total, details;
+            if (item.pricePerSqm) { total = item.pricePerSqm * qty; details = `${item.name}: ${qty} м² = ${total}₽`; }
+            else { total = item.price * qty; details = `${item.name}: ${qty} шт = ${total}₽`; }
+            addToCart(`Химчистка - ${item.name}`, qty, item.pricePerSqm ? 'м²' : 'шт', total, details);
+            document.getElementById('chemicalQty').value = 1;
         }
         
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str.replace(/[&<>]/g, function(m) {
-                if (m === '&') return '&amp;';
-                if (m === '<') return '&lt;';
-                if (m === '>') return '&gt;';
-                return m;
-            });
-        }
-        
-        // Инициализация
-        document.addEventListener('DOMContentLoaded', () => {
-            renderServices();
-            loadCart();
-            document.getElementById('cartBtn').onclick = openCart;
-        });
+        document.getElementById('cartBtn').onclick = openCart;
+        renderServices();
+        loadCart();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
