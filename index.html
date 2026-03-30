@@ -7,378 +7,67 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        /* Стили для навигации */
-        .navbar {
-            background: rgba(33, 37, 41, 0.95) !important;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Оригинальные стили */
-        .rounded-ing {
-            width: 60%;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            padding: 3em;
-            margin-bottom: 2em;
-        }
-        
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .timeline-item {
-            margin-bottom: 30px;
-            position: relative;
-        }
-        
-        .timeline-year {
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: #0d6efd;
-        }
-        
-        .company-card {
-            transition: transform 0.3s;
-            margin-bottom: 20px;
-        }
-        
-        .company-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .values-section {
-            background-color: #f8f9fa;
-            padding: 50px 0;
-            margin-top: 50px;
-            border-radius: 20px;
-        }
-        
-        .contact-info {
-            background-color: #e9ecef;
-            padding: 30px 0;
-            margin-top: 50px;
-        }
-        
-        .contact-item {
-            margin-bottom: 15px;
-        }
-        
-        .contact-item a {
-            text-decoration: none;
-            color: #0d6efd;
-            font-size: 1.1rem;
-        }
-        
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
-        
-        .review-card {
-            background-color: #fff;
-            border-left: 4px solid #0d6efd;
-            transition: transform 0.3s;
-        }
-        
-        .review-card:hover {
-            transform: translateY(-3px);
-        }
-        
-        .review-text {
-            font-style: italic;
-            color: #555;
-        }
-        
-        .review-author {
-            font-weight: bold;
-            color: #0d6efd;
-            margin-top: 10px;
-        }
-        
-        .footer {
-            background-color: #212529;
-            color: #fff;
-            padding: 40px 0 20px;
-            margin-top: 50px;
-        }
-        
-        .footer a {
-            color: #aaa;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            color: #fff;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .navbar { background: rgba(33, 37, 41, 0.95) !important; backdrop-filter: blur(10px); }
+        .rounded-ing { width: 60%; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.5); padding: 3em; margin-bottom: 2em; }
+        .timeline { position: relative; padding: 20px 0; }
+        .timeline-item { margin-bottom: 30px; position: relative; }
+        .timeline-year { font-weight: bold; font-size: 1.5rem; color: #0d6efd; }
+        .company-card { transition: transform 0.3s; margin-bottom: 20px; }
+        .company-card:hover { transform: translateY(-5px); }
+        .values-section { background-color: #f8f9fa; padding: 50px 0; margin-top: 50px; border-radius: 20px; }
+        .contact-info { background-color: #e9ecef; padding: 30px 0; margin-top: 50px; }
+        .contact-item { margin-bottom: 15px; }
+        .contact-item a { text-decoration: none; color: #0d6efd; font-size: 1.1rem; }
+        .review-card { background-color: #fff; border-left: 4px solid #0d6efd; transition: transform 0.3s; }
+        .review-card:hover { transform: translateY(-3px); }
+        .review-text { font-style: italic; color: #555; }
+        .review-author { font-weight: bold; color: #0d6efd; margin-top: 10px; }
+        .footer { background-color: #212529; color: #fff; padding: 40px 0 20px; margin-top: 50px; }
+        .footer a { color: #aaa; text-decoration: none; }
+        .footer a:hover { color: #fff; }
         
         /* Стили для корзины */
-        .cart-sidebar {
-            position: fixed;
-            right: -400px;
-            top: 0;
-            width: 400px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
-            transition: right 0.3s ease;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-sidebar.open {
-            right: 0;
-        }
-
-        .cart-header {
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-header h3 {
-            margin: 0;
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .cart-item-info {
-            flex: 1;
-        }
-
-        .cart-item-name {
-            font-weight: 500;
-        }
-
-        .cart-item-details {
-            font-size: 12px;
-            color: #666;
-        }
-
-        .cart-item-price {
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .remove-item {
-            background: none;
-            border: none;
-            color: #ff4757;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .cart-footer {
-            padding: 20px;
-            border-top: 1px solid #eee;
-            background: #f8f9fa;
-        }
-
-        .cart-total {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .cart-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .cart-count {
-            background: #ff4757;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        /* Модальное окно оформления */
-        .checkout-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 1100;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .checkout-modal.active {
-            display: flex;
-        }
-
-        .checkout-form {
-            background: white;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            padding: 30px;
-        }
-
-        .checkout-form h3 {
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-        }
-
-        .submit-order {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        /* Карточки услуг */
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .service-card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .service-price {
-            font-size: 24px;
-            font-weight: bold;
-            color: #667eea;
-            margin: 15px 0;
-        }
-
-        .service-input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-
-        .add-to-cart {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 10px;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .toast-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #28a745;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 10px;
-            z-index: 1200;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .rounded-ing {
-                width: 80%;
-                padding: 2em;
-            }
-            .cart-sidebar {
-                width: 100%;
-                right: -100%;
-            }
-        }
+        .cart-sidebar { position: fixed; right: -400px; top: 0; width: 400px; height: 100vh; background: white; box-shadow: -5px 0 30px rgba(0,0,0,0.3); transition: right 0.3s ease; z-index: 1000; display: flex; flex-direction: column; }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; display: flex; justify-content: space-between; align-items: center; }
+        .cart-header h3 { margin: 0; }
+        .close-cart { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+        .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .cart-item-info { flex: 1; }
+        .cart-item-name { font-weight: 500; }
+        .cart-item-details { font-size: 12px; color: #666; }
+        .cart-item-price { font-weight: bold; color: #667eea; }
+        .remove-item { background: none; border: none; color: #ff4757; cursor: pointer; margin-left: 10px; }
+        .cart-footer { padding: 20px; border-top: 1px solid #eee; background: #f8f9fa; }
+        .cart-total { font-size: 20px; font-weight: bold; margin-bottom: 15px; text-align: center; }
+        .checkout-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; }
+        .cart-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 8px 20px; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .cart-count { background: #ff4757; border-radius: 50%; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; }
+        .checkout-modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1100; justify-content: center; align-items: center; }
+        .checkout-modal.active { display: flex; }
+        .checkout-form { background: white; border-radius: 20px; max-width: 500px; width: 90%; padding: 30px; }
+        .checkout-form h3 { margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
+        .submit-order { width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+        .service-card { background: white; border-radius: 15px; padding: 20px; margin-bottom: 20px; transition: transform 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .service-card h3 { font-size: 20px; margin-bottom: 10px; }
+        .service-price { font-size: 24px; font-weight: bold; color: #667eea; margin: 15px 0; }
+        .service-input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 10px; margin: 10px 0; }
+        .add-to-cart { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 10px; border-radius: 10px; width: 100%; cursor: pointer; }
+        .toast-notification { position: fixed; bottom: 20px; right: 20px; background: #28a745; color: white; padding: 12px 24px; border-radius: 10px; z-index: 1200; display: none; }
+        @media (max-width: 768px) { .rounded-ing { width: 80%; padding: 2em; } .cart-sidebar { width: 100%; right: -100%; } }
     </style>
 </head>
 <body>
-    <!-- Навигация -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="image.png" alt="logo" width="40" style="border-radius: 50%;"/>
+            <a class="navbar-brand" href="#">
+                <img src="image.png" alt="logo" width="40" style="border-radius: 50%;" onerror="this.style.display='none'">
                 <span class="ms-2">Клининг С Любовью</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -401,32 +90,26 @@
 
     <div style="margin-top: 76px;"></div>
 
-    <!-- ПЕРВЫЙ СЛАЙД - Главная -->
+    <!-- Главный слайд -->
     <div class="container text-center my-5">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <img class="rounded-ing" src="image copy 2.png" alt="Love.clean" />
+                <img class="rounded-ing" src="image copy 2.png" alt="Love.clean" onerror="this.style.display='none'">
                 <h1 class="fw-light">Клининговая компания с Любовью</h1>
                 <p class="lead text-muted">
                     Клининговая компания, предлагаем свои услуги по уборке в домах.
                     Работаем как с юр. лицами, так и физ лицами.
                 </p>
                 <div class="mt-4">
-                    <a href="javascript:void(0)" onclick="openTelegram('Lubasha9999')" class="btn btn-primary me-2">
-                        📱 Для связи
-                    </a>
-                    <a href="javascript:void(0)" onclick="openTelegram('love_cleanmoon')" class="btn btn-secondary me-2">
-                        📢 Телеграмм канал
-                    </a>
-                    <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-success">
-                        🤖 Написать боту
-                    </a>
+                    <a href="https://t.me/Lubasha9999" target="_blank" class="btn btn-primary me-2">📱 Для связи</a>
+                    <a href="https://t.me/love_cleanmoon" target="_blank" class="btn btn-secondary me-2">📢 Телеграмм канал</a>
+                    <a href="https://t.me/LoveCleanBot" target="_blank" class="btn btn-success">🤖 Написать боту</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Блок: Наши услуги с корзиной -->
+    <!-- Услуги с корзиной -->
     <div id="services" class="container my-5">
         <div class="text-center mb-5">
             <h2 class="display-4">Наши услуги</h2>
@@ -436,7 +119,7 @@
         <div class="row" id="servicesGrid"></div>
     </div>
 
-    <!-- Блок: Прайс-лист (старый блок) -->
+    <!-- Прайс-лист -->
     <div id="prices" class="container my-5">
         <div class="text-center mb-5">
             <h2 class="display-4">Прайс-лист</h2>
@@ -448,9 +131,7 @@
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <table class="table table-hover">
-                            <thead>
-                                <tr><th>Услуга</th><th>Цена</th></tr>
-                            </thead>
+                            <thead><tr><th>Услуга</th><th>Цена</th></tr></thead>
                             <tbody>
                                 <tr><td>Генеральная уборка</td><td>120 ₽/м²</td></tr>
                                 <tr><td>Мойка окон</td><td>350 ₽/створка</td></tr>
@@ -469,263 +150,101 @@
         </div>
     </div>
 
-    <!-- ВТОРОЙ СЛАЙД - О нас (История компании) -->
+    <!-- О нас -->
     <div id="about" class="container my-5">
         <div class="text-center mb-5">
             <h2 class="display-4">О нашей компании</h2>
             <p class="lead">История развития и наши ценности</p>
             <hr class="w-25 mx-auto">
         </div>
-
-        <!-- История компании -->
         <div class="row mb-5">
             <div class="col-12">
                 <h3 class="text-center mb-4">Наш путь</h3>
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="card company-card">
-                            <div class="card-body">
-                                <div class="timeline-year">2020</div>
-                                <h5>Основание компании</h5>
-                                <p>Компания "С Любовью" начала свой путь с небольшой команды из 3 человек, которые верили в чистоту и качество. Начинали с уборки квартир и маленьких офисов.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="card company-card">
-                            <div class="card-body">
-                                <div class="timeline-year">2022</div>
-                                <h5>Расширение команды и услуг</h5>
-                                <p>Команда выросла до 15 профессиональных клинеров. Мы добавили новые услуги: генеральную уборку, мойку окон, химчистку мягкой мебели и эко-уборку.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="card company-card">
-                            <div class="card-body">
-                                <div class="timeline-year">2024</div>
-                                <h5>Выход на новый уровень</h5>
-                                <p>Начали сотрудничество с крупными компаниями и ТЦ. Внедрили эко-технологии уборки и систему контроля качества. Нас выбрали более 500 постоянных клиентов.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="card company-card">
-                            <div class="card-body">
-                                <div class="timeline-year">2026</div>
-                                <h5>Сегодня</h5>
-                                <p>Мы - команда из 30+ профессионалов, используем современное оборудование и экологичные средства. Наша миссия - делать мир чище с любовью к каждому клиенту.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="timeline-item"><div class="card company-card"><div class="card-body"><div class="timeline-year">2020</div><h5>Основание компании</h5><p>Компания "С Любовью" начала свой путь с небольшой команды из 3 человек.</p></div></div></div>
+                    <div class="timeline-item"><div class="card company-card"><div class="card-body"><div class="timeline-year">2022</div><h5>Расширение команды и услуг</h5><p>Команда выросла до 15 профессиональных клинеров.</p></div></div></div>
+                    <div class="timeline-item"><div class="card company-card"><div class="card-body"><div class="timeline-year">2024</div><h5>Выход на новый уровень</h5><p>Начали сотрудничество с крупными компаниями и ТЦ.</p></div></div></div>
+                    <div class="timeline-item"><div class="card company-card"><div class="card-body"><div class="timeline-year">2026</div><h5>Сегодня</h5><p>Мы - команда из 30+ профессионалов.</p></div></div></div>
                 </div>
             </div>
         </div>
-
-        <!-- Наши ценности -->
         <div class="values-section rounded">
             <div class="row text-center">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 bg-transparent">
-                        <div class="card-body">
-                            <h4>❤️ Качество</h4>
-                            <p>Используем только профессиональные средства и современное оборудование</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 bg-transparent">
-                        <div class="card-body">
-                            <h4>🌱 Эко-подход</h4>
-                            <p>Безопасные для здоровья и окружающей среды средства уборки</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 bg-transparent">
-                        <div class="card-body">
-                            <h4>🤝 Надежность</h4>
-                            <p>Гарантия качества и индивидуальный подход к каждому клиенту</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-md-4 mb-4"><div class="card h-100 border-0 bg-transparent"><div class="card-body"><h4>❤️ Качество</h4><p>Профессиональные средства и оборудование</p></div></div></div>
+                <div class="col-md-4 mb-4"><div class="card h-100 border-0 bg-transparent"><div class="card-body"><h4>🌱 Эко-подход</h4><p>Безопасные для здоровья средства</p></div></div></div>
+                <div class="col-md-4 mb-4"><div class="card h-100 border-0 bg-transparent"><div class="card-body"><h4>🤝 Надежность</h4><p>Гарантия качества</p></div></div></div>
             </div>
         </div>
-
-        <!-- Статистика -->
         <div class="row text-center mt-5">
-            <div class="col-md-3 col-6 mb-3">
-                <h3 class="text-primary">500+</h3>
-                <p>Довольных клиентов</p>
-            </div>
-            <div class="col-md-3 col-6 mb-3">
-                <h3 class="text-primary">30+</h3>
-                <p>Профессионалов</p>
-            </div>
-            <div class="col-md-3 col-6 mb-3">
-                <h3 class="text-primary">4+</h3>
-                <p>Года работы</p>
-            </div>
-            <div class="col-md-3 col-6 mb-3">
-                <h3 class="text-primary">24/7</h3>
-                <p>Поддержка</p>
-            </div>
+            <div class="col-md-3 col-6 mb-3"><h3 class="text-primary">500+</h3><p>Довольных клиентов</p></div>
+            <div class="col-md-3 col-6 mb-3"><h3 class="text-primary">30+</h3><p>Профессионалов</p></div>
+            <div class="col-md-3 col-6 mb-3"><h3 class="text-primary">4+</h3><p>Года работы</p></div>
+            <div class="col-md-3 col-6 mb-3"><h3 class="text-primary">24/7</h3><p>Поддержка</p></div>
         </div>
     </div>
 
-    <!-- Блок: Отзывы клиентов -->
+    <!-- Отзывы -->
     <div id="reviews" class="container my-5">
         <div class="text-center mb-5">
             <h2 class="display-4">Отзывы наших клиентов</h2>
-            <p class="lead">Что говорят о нас те, кто уже воспользовался нашими услугами</p>
             <hr class="w-25 mx-auto">
         </div>
         <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card review-card h-100 p-3">
-                    <div class="card-body">
-                        <div class="review-text">
-                            <p>"Заказывали генеральную уборку квартиры после ремонта. Ребята приехали вовремя, всё сделали на высшем уровне! Особенно порадовало внимание к деталям — отмыли даже труднодоступные места. Рекомендую!"</p>
-                        </div>
-                        <div class="review-author">
-                            — Анна, Москва
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card review-card h-100 p-3">
-                    <div class="card-body">
-                        <div class="review-text">
-                            <p>"Обратились для регулярной уборки офиса. Очень довольны результатом! Команда работает быстро, качественно, и что важно — не мешает сотрудникам. Цены адекватные, обслуживание на высоте."</p>
-                        </div>
-                        <div class="review-author">
-                            — ООО "ТехноСервис"
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card review-card h-100 p-3">
-                    <div class="card-body">
-                        <div class="review-text">
-                            <p>"Делали химчистку дивана и ковра. Результат превзошел ожидания! Пятна вывели полностью, запаха химии не осталось. Вежливые и аккуратные сотрудники. Спасибо, будем обращаться еще!"</p>
-                        </div>
-                        <div class="review-author">
-                            — Елена, Московская область
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="col-md-4 mb-4"><div class="card review-card h-100 p-3"><div class="card-body"><div class="review-text"><p>"Заказывали генеральную уборку квартиры после ремонта. Всё сделали на высшем уровне!"</p></div><div class="review-author">— Анна, Москва</div></div></div></div>
+            <div class="col-md-4 mb-4"><div class="card review-card h-100 p-3"><div class="card-body"><div class="review-text"><p>"Обратились для регулярной уборки офиса. Очень довольны результатом!"</p></div><div class="review-author">— ООО "ТехноСервис"</div></div></div></div>
+            <div class="col-md-4 mb-4"><div class="card review-card h-100 p-3"><div class="card-body"><div class="review-text"><p>"Делали химчистку дивана и ковра. Результат превзошел ожидания!"</p></div><div class="review-author">— Елена, МО</div></div></div></div>
         </div>
     </div>
 
-    <!-- Блок: Контактная информация -->
+    <!-- Контакты -->
     <div id="contacts" class="contact-info">
         <div class="container">
             <div class="text-center mb-4">
                 <h2 class="display-4">Свяжитесь с нами</h2>
-                <p class="lead">Мы всегда на связи и готовы ответить на ваши вопросы</p>
                 <hr class="w-25 mx-auto">
             </div>
             <div class="row">
-                <div class="col-md-4 text-center contact-item">
-                    <h4>📞 Телефон</h4>
-                    <a href="tel:+79656531941">+7 (965) 653-19-41</a>
-                </div>
-                <div class="col-md-4 text-center contact-item">
-                    <h4>✉️ Email</h4>
-                    <a href="mailto:plotnikovalubov121@gmail.com">plotnikovalubov121@gmail.com</a>
-                </div>
-                <div class="col-md-4 text-center contact-item">
-                    <h4>📍 Районы работы</h4>
-                    <p>Москва и Московская область</p>
-                </div>
+                <div class="col-md-4 text-center contact-item"><h4>📞 Телефон</h4><a href="tel:+79656531941">+7 (965) 653-19-41</a></div>
+                <div class="col-md-4 text-center contact-item"><h4>✉️ Email</h4><a href="mailto:kirill0606kira@yandex.ru">kirill0606kira@yandex.ru</a></div>
+                <div class="col-md-4 text-center contact-item"><h4>📍 Районы работы</h4><p>Москва и Московская область</p></div>
             </div>
             <div class="row mt-3">
                 <div class="col-12 text-center">
-                    <a href="javascript:void(0)" onclick="openTelegram('Lubasha9999')" class="btn btn-primary mx-2">
-                        📱 Написать в Telegram
-                    </a>
-                    <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-success mx-2">
-                        🤖 Написать боту
-                    </a>
+                    <a href="https://t.me/Lubasha9999" target="_blank" class="btn btn-primary mx-2">📱 Написать в Telegram</a>
+                    <a href="https://t.me/LoveCleanBot" target="_blank" class="btn btn-success mx-2">🤖 Написать боту</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Подвал сайта -->
+    <!-- Подвал -->
     <div class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 text-center text-md-start mb-3">
-                    <h5>Клининговая компания "С Любовью"</h5>
-                    <p class="small">Профессиональная уборка с заботой о вас и вашем доме</p>
-                </div>
-                <div class="col-md-4 text-center mb-3">
-                    <h5>Навигация</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#services">Услуги</a></li>
-                        <li><a href="#prices">Прайс-лист</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#reviews">Отзывы</a></li>
-                        <li><a href="#contacts">Контакты</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 text-center text-md-end mb-3">
-                    <h5>Контакты</h5>
-                    <p><a href="tel:+79656531941">+7 (965) 653-19-41</a></p>
-                    <p><a href="mailto:plotnikovalubov121@gmail.com">plotnikovalubov121@gmail.com</a></p>
-                    <p><a href="javascript:void(0)" onclick="openTelegram('love_cleanmoon')">Наш Telegram канал</a></p>
-                </div>
+                <div class="col-md-4 text-center text-md-start mb-3"><h5>Клининговая компания "С Любовью"</h5><p class="small">Профессиональная уборка с заботой о вас</p></div>
+                <div class="col-md-4 text-center mb-3"><h5>Навигация</h5><ul class="list-unstyled"><li><a href="#services">Услуги</a></li><li><a href="#prices">Прайс-лист</a></li><li><a href="#about">О нас</a></li><li><a href="#reviews">Отзывы</a></li><li><a href="#contacts">Контакты</a></li></ul></div>
+                <div class="col-md-4 text-center text-md-end mb-3"><h5>Контакты</h5><p><a href="tel:+79656531941">+7 (965) 653-19-41</a></p><p><a href="mailto:kirill0606kira@yandex.ru">kirill0606kira@yandex.ru</a></p></div>
             </div>
-            <div class="row mt-3">
-                <div class="col-12 text-center">
-                    <hr class="bg-secondary">
-                    <p class="small mb-0">© 2026 Клининговая компания "С Любовью". Все права защищены.</p>
-                </div>
-            </div>
+            <div class="row mt-3"><div class="col-12 text-center"><hr class="bg-secondary"><p class="small mb-0">© 2026 Клининговая компания "С Любовью". Все права защищены.</p></div></div>
         </div>
     </div>
 
-    <!-- Корзина (сайдбар) -->
+    <!-- Корзина -->
     <div id="cartSidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h3><i class="fas fa-shopping-cart"></i> Корзина</h3>
-            <button class="close-cart" onclick="closeCart()">&times;</button>
-        </div>
+        <div class="cart-header"><h3><i class="fas fa-shopping-cart"></i> Корзина</h3><button class="close-cart" onclick="closeCart()">&times;</button></div>
         <div id="cartItems" class="cart-items"></div>
-        <div class="cart-footer">
-            <div class="cart-total" id="cartTotal">Итого: 0₽</div>
-            <button class="checkout-btn" onclick="openCheckout()">Оформить заказ</button>
-        </div>
+        <div class="cart-footer"><div class="cart-total" id="cartTotal">Итого: 0₽</div><button class="checkout-btn" onclick="openCheckout()">Оформить заказ</button></div>
     </div>
 
-    <!-- Модальное окно оформления -->
+    <!-- Модальное окно -->
     <div id="checkoutModal" class="checkout-modal">
         <div class="checkout-form">
             <h3><i class="fas fa-clipboard-list"></i> Оформление заказа</h3>
-            <form id="orderForm">
-                <div class="form-group">
-                    <input type="text" id="clientName" placeholder="Ваше имя" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" id="clientPhone" placeholder="Телефон" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="clientEmail" placeholder="Email (для чека)">
-                </div>
-                <div class="form-group">
-                    <input type="text" id="clientAddress" placeholder="Адрес" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="clientComment" rows="3" placeholder="Комментарий к заказу"></textarea>
-                </div>
-                <button type="button" class="submit-order" onclick="submitOrder()">
-                    <i class="fas fa-paper-plane"></i> Отправить заказ
-                </button>
-            </form>
+            <div class="form-group"><input type="text" id="clientName" placeholder="Ваше имя" required></div>
+            <div class="form-group"><input type="tel" id="clientPhone" placeholder="Телефон" required></div>
+            <div class="form-group"><input type="text" id="clientAddress" placeholder="Адрес" required></div>
+            <div class="form-group"><textarea id="clientComment" rows="3" placeholder="Комментарий к заказу"></textarea></div>
+            <button type="button" class="submit-order" onclick="submitOrder()"><i class="fas fa-paper-plane"></i> Отправить заказ</button>
             <button class="btn btn-secondary w-100 mt-2" onclick="closeCheckout()">Отмена</button>
         </div>
     </div>
@@ -733,20 +252,7 @@
     <div id="toast" class="toast-notification">✅ Добавлено в корзину!</div>
 
     <script>
-        // Функция для открытия Telegram
-        function openTelegram(chatId) {
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            if (isIOS) {
-                window.location.href = 'https://t.me/' + chatId;
-            } else {
-                window.location.href = 'tg://resolve?domain=' + chatId;
-                setTimeout(function() {
-                    window.location.href = 'https://t.me/' + chatId;
-                }, 2000);
-            }
-        }
-
-        // Данные для отправки
+        // НАСТРОЙКИ
         const BOT_TOKEN = "8514292885:AAFfAFykQvQS0eE76qGxToERtF3TQiIFxKo";
         const YOUR_EMAIL = "kirill0606kira@yandex.ru";
         
@@ -771,26 +277,13 @@
 
         function loadCart() {
             const saved = localStorage.getItem('cleaning_cart');
-            if (saved) {
-                cart = JSON.parse(saved);
-                updateCartUI();
-            }
+            if (saved) { cart = JSON.parse(saved); updateCartUI(); }
         }
 
-        function saveCart() {
-            localStorage.setItem('cleaning_cart', JSON.stringify(cart));
-        }
+        function saveCart() { localStorage.setItem('cleaning_cart', JSON.stringify(cart)); }
 
         function addToCart(serviceName, quantity, unit, price, details) {
-            cart.push({
-                id: Date.now(),
-                name: serviceName,
-                quantity: quantity,
-                unit: unit,
-                price: price,
-                details: details,
-                total: price
-            });
+            cart.push({ id: Date.now(), name: serviceName, quantity, unit, price, details, total: price });
             saveCart();
             updateCartUI();
             showToast();
@@ -806,30 +299,13 @@
             const cartItemsDiv = document.getElementById('cartItems');
             const cartCountSpan = document.getElementById('cartCount');
             const cartTotalDiv = document.getElementById('cartTotal');
-            
             let total = 0;
             cartItemsDiv.innerHTML = '';
-            
             cart.forEach(item => {
                 total += item.total;
-                cartItemsDiv.innerHTML += `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-details">${item.details}</div>
-                        </div>
-                        <div class="cart-item-price">${item.total}₽</div>
-                        <button class="remove-item" onclick="removeFromCart(${item.id})">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `;
+                cartItemsDiv.innerHTML += `<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">${item.name}</div><div class="cart-item-details">${item.details}</div></div><div class="cart-item-price">${item.total}₽</div><button class="remove-item" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button></div>`;
             });
-            
-            if (cart.length === 0) {
-                cartItemsDiv.innerHTML = '<div class="text-center text-muted">Корзина пуста</div>';
-            }
-            
+            if (cart.length === 0) cartItemsDiv.innerHTML = '<div class="text-center text-muted">Корзина пуста</div>';
             cartCountSpan.textContent = cart.length;
             cartTotalDiv.textContent = `Итого: ${total}₽`;
         }
@@ -837,35 +313,20 @@
         function showToast() {
             const toast = document.getElementById('toast');
             toast.style.display = 'block';
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 2000);
+            setTimeout(() => { toast.style.display = 'none'; }, 2000);
         }
 
-        function openCart() {
-            document.getElementById('cartSidebar').classList.add('open');
-        }
-
-        function closeCart() {
-            document.getElementById('cartSidebar').classList.remove('open');
-        }
-
+        function openCart() { document.getElementById('cartSidebar').classList.add('open'); }
+        function closeCart() { document.getElementById('cartSidebar').classList.remove('open'); }
         function openCheckout() {
-            if (cart.length === 0) {
-                alert('Корзина пуста!');
-                return;
-            }
+            if (cart.length === 0) { alert('Корзина пуста!'); return; }
             document.getElementById('checkoutModal').classList.add('active');
         }
-
-        function closeCheckout() {
-            document.getElementById('checkoutModal').classList.remove('active');
-        }
+        function closeCheckout() { document.getElementById('checkoutModal').classList.remove('active'); }
 
         async function submitOrder() {
             const name = document.getElementById('clientName').value;
             const phone = document.getElementById('clientPhone').value;
-            const email = document.getElementById('clientEmail').value;
             const address = document.getElementById('clientAddress').value;
             const comment = document.getElementById('clientComment').value;
             
@@ -875,70 +336,43 @@
             }
             
             const total = cart.reduce((sum, item) => sum + item.total, 0);
-            
             let orderText = `🆕 НОВЫЙ ЗАКАЗ С САЙТА\n\n`;
             orderText += `👤 Имя: ${name}\n`;
             orderText += `📞 Телефон: ${phone}\n`;
-            orderText += `📧 Email: ${email || 'не указан'}\n`;
             orderText += `🏠 Адрес: ${address}\n`;
             orderText += `📝 Комментарий: ${comment || 'нет'}\n\n`;
             orderText += `📦 Услуги:\n`;
+            cart.forEach((item, i) => { orderText += `${i+1}. ${item.name}: ${item.details} = ${item.total}₽\n`; });
+            orderText += `\n💰 ИТОГО: ${total}₽\n⏰ ${new Date().toLocaleString()}`;
             
-            cart.forEach((item, i) => {
-                orderText += `${i+1}. ${item.name}: ${item.details} = ${item.total}₽\n`;
-            });
-            
-            orderText += `\n💰 ИТОГО: ${total}₽\n`;
-            orderText += `\n⏰ ${new Date().toLocaleString()}`;
-            
-            // Отправка в Telegram (менеджеру)
+            // Отправка в Telegram
             try {
                 await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: '716370384',
-                        text: orderText
-                    })
+                    body: JSON.stringify({ chat_id: '716370384', text: orderText })
                 });
-            } catch (e) {
-                console.error('Telegram error:', e);
-            }
+            } catch(e) { console.error('Telegram error:', e); }
             
-            // Отправка на email
-            try {
-                const formData = new FormData();
-                formData.append('name', name);
-                formData.append('phone', phone);
-                formData.append('email', email);
-                formData.append('address', address);
-                formData.append('comment', comment);
-                formData.append('order', orderText);
-                formData.append('_subject', `Новый заказ от ${name}`);
-                formData.append('_replyto', email || YOUR_EMAIL);
-                
-                await fetch('https://formsubmit.co/ajax/' + YOUR_EMAIL, {
-                    method: 'POST',
-                    body: formData
-                });
-            } catch (e) {
-                console.error('Email error:', e);
-            }
+            // Отправка на email через простой mailto (откроет почтовую программу)
+            const mailtoLink = `mailto:${YOUR_EMAIL}?subject=Новый заказ от ${name}&body=${encodeURIComponent(orderText)}`;
+            window.open(mailtoLink, '_blank');
             
             alert('✅ Заказ отправлен! Менеджер свяжется с вами.');
-            
             cart = [];
             saveCart();
             updateCartUI();
             closeCheckout();
             closeCart();
-            document.getElementById('orderForm').reset();
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientPhone').value = '';
+            document.getElementById('clientAddress').value = '';
+            document.getElementById('clientComment').value = '';
         }
 
         function renderServices() {
             const grid = document.getElementById('servicesGrid');
             grid.innerHTML = '';
-            
             services.forEach(service => {
                 const card = document.createElement('div');
                 card.className = 'col-md-4';
@@ -954,20 +388,15 @@
                 `;
                 grid.appendChild(card);
             });
-            
             const chemicalCard = document.createElement('div');
             chemicalCard.className = 'col-md-4';
             chemicalCard.innerHTML = `
                 <div class="service-card">
                     <h3>🧼 Химчистка</h3>
                     <div class="service-price">от 500₽</div>
-                    <select id="chemicalSelect" class="service-input">
-                        ${chemicalItems.map(item => `<option value="${item.id}">${item.name}${item.pricePerSqm ? ` (${item.pricePerSqm}₽/м²)` : ` (${item.price}₽/шт)`}</option>`).join('')}
-                    </select>
+                    <select id="chemicalSelect" class="service-input">${chemicalItems.map(item => `<option value="${item.id}">${item.name}${item.pricePerSqm ? ` (${item.pricePerSqm}₽/м²)` : ` (${item.price}₽/шт)`}</option>`).join('')}</select>
                     <input type="number" id="chemicalQty" class="service-input" placeholder="Введите количество" min="1" value="1">
-                    <button class="add-to-cart" onclick="addChemicalToCart()">
-                        <i class="fas fa-cart-plus"></i> Добавить в корзину
-                    </button>
+                    <button class="add-to-cart" onclick="addChemicalToCart()"><i class="fas fa-cart-plus"></i> Добавить в корзину</button>
                 </div>
             `;
             grid.appendChild(chemicalCard);
@@ -977,10 +406,8 @@
             const qtyInput = document.getElementById(`qty_${serviceId}`);
             let quantity = parseFloat(qtyInput.value);
             if (isNaN(quantity) || quantity <= 0) quantity = 1;
-            
             const totalPrice = pricePerUnit * quantity;
             const details = `${quantity} ${unit}`;
-            
             addToCart(serviceName, quantity, unit, totalPrice, details);
             qtyInput.value = 1;
         }
@@ -992,44 +419,17 @@
             const qtyInput = document.getElementById('chemicalQty');
             let quantity = parseFloat(qtyInput.value);
             if (isNaN(quantity) || quantity <= 0) quantity = 1;
-            
             let totalPrice, details;
-            if (item.pricePerSqm) {
-                totalPrice = item.pricePerSqm * quantity;
-                details = `${item.name}: ${quantity} м²`;
-            } else {
-                totalPrice = item.price * quantity;
-                details = `${item.name}: ${quantity} шт`;
-            }
-            
+            if (item.pricePerSqm) { totalPrice = item.pricePerSqm * quantity; details = `${item.name}: ${quantity} м²`; }
+            else { totalPrice = item.price * quantity; details = `${item.name}: ${quantity} шт`; }
             addToCart(`Химчистка - ${item.name}`, quantity, item.pricePerSqm ? 'м²' : 'шт', totalPrice, details);
             qtyInput.value = 1;
         }
         
         document.getElementById('cartBtn').onclick = openCart;
-        
         renderServices();
         loadCart();
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-        ym(108207850, 'init', {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-        });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/108207850" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </body>
 </html>
