@@ -1,509 +1,727 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Клининговая компания с Любовью</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
-    
-    <script>
-    function openTelegram(chatId) {
-      // Для iOS (iPhone/iPad) - пробуем разные схемы
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-      
-      if (isIOS) {
-        // Для iOS используем ссылку с https://t.me, iOS сама предложит открыть в приложении
-        window.location.href = 'https://t.me/' + chatId;
-      } else {
-        // Для Android сначала пробуем открыть в приложении
-        window.location.href = 'tg://resolve?domain=' + chatId;
-        
-        // Если через 2 секунды не открылось - открываем в браузере
-        setTimeout(function() {
-          window.location.href = 'https://t.me/' + chatId;
-        }, 2000);
-      }
-    }
-    
-    // Проверяем, открыт ли сайт на телефоне
-    function checkMobile() {
-      if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        console.log("Мобильная версия сайта");
-      }
-    }
-    
-    window.onload = checkMobile;
-    </script>
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клининг С Любовью - Заказать уборку</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      .rounded-ing {
-        width: 60%;
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        padding: 3em;
-        margin-bottom: 2em;
-      }
-      .timeline {
-        position: relative;
-        padding: 20px 0;
-      }
-      .timeline-item {
-        margin-bottom: 30px;
-        position: relative;
-      }
-      .timeline-year {
-        font-weight: bold;
-        font-size: 1.5rem;
-        color: #0d6efd;
-      }
-      .company-card {
-        transition: transform 0.3s;
-        margin-bottom: 20px;
-      }
-      .company-card:hover {
-        transform: translateY(-5px);
-      }
-      .values-section {
-        background-color: #f8f9fa;
-        padding: 50px 0;
-        margin-top: 50px;
-      }
-      .contact-info {
-        background-color: #e9ecef;
-        padding: 30px 0;
-        margin-top: 50px;
-      }
-      .contact-item {
-        margin-bottom: 15px;
-      }
-      .contact-item a {
-        text-decoration: none;
-        color: #0d6efd;
-        font-size: 1.1rem;
-      }
-      .contact-item a:hover {
-        text-decoration: underline;
-      }
-      .review-card {
-        background-color: #fff;
-        border-left: 4px solid #0d6efd;
-        transition: transform 0.3s;
-      }
-      .review-card:hover {
-        transform: translateY(-3px);
-      }
-      .review-text {
-        font-style: italic;
-        color: #555;
-      }
-      .review-author {
-        font-weight: bold;
-        color: #0d6efd;
-        margin-top: 10px;
-      }
-      .footer {
-        background-color: #212529;
-        color: #fff;
-        padding: 40px 0 20px;
-        margin-top: 50px;
-      }
-      .footer a {
-        color: #aaa;
-        text-decoration: none;
-      }
-      .footer a:hover {
-        color: #fff;
-      }
-      @media (max-width: 768px) {
-        .rounded-ing {
-          width: 80%;
-          padding: 2em;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .display-4 {
-          font-size: 2rem;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
-        .contact-item a {
-          font-size: 1rem;
+
+        .navbar {
+            background: rgba(33, 37, 41, 0.95) !important;
+            backdrop-filter: blur(10px);
         }
-      }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Карточка корзины */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            margin: 0;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 500;
+        }
+
+        .cart-item-details {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .cart-item-price {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff4757;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background: #f8f9fa;
+        }
+
+        .cart-total {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .cart-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-count {
+            background: #ff4757;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        /* Модальное окно оформления */
+        .checkout-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .checkout-modal.active {
+            display: flex;
+        }
+
+        .checkout-form {
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            padding: 30px;
+        }
+
+        .checkout-form h3 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .submit-order {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Карточки услуг */
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .service-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 15px 0;
+        }
+
+        .service-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            z-index: 1200;
+            display: none;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            padding: 10px 30px;
+        }
     </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand p-0" href="/">
-          <img src="image.png" alt="logo" width="40"/>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="/">Главная</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="prace.html">Прайс-лист</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">О нас</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#services">Услуги</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#reviews">Отзывы</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contacts">Контакты</a>
-            </li>
-          </ul>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-heart" style="color: #ff6b6b;"></i>
+                Клининг С Любовью
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">О нас</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
+                </ul>
+                <button class="cart-btn ms-3" id="cartBtn">
+                    🛒 Корзина <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
         </div>
-        <div class="d-none d-lg-block">
-          <a href="tel:+79001234567" class="text-white text-decoration-none">
-            📞 +7 (965) 653-19-41
-          </a>
-        </div>
-      </div>
     </nav>
-    
-    <!-- ПЕРВЫЙ СЛАЙД - Главная -->
-    <div class="container text-center my-5">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <img class="rounded-ing" src="image copy 2.png" alt="Love.clean" />
-          <h1 class="fw-light">Клининговая компания с Любовью</h1>
-          <p class="lead text-muted">
-            Клининговая компания, предлагаем свои услуги по уборке в домах.
-            Работаем как с юр. лицами, так и физ лицами.
-          </p>
-          
-          <a href="javascript:void(0)" onclick="openTelegram('Lubasha9999')" class="btn btn-primary">
-            📱 Для связи
-          </a>
-          
-          <a href="javascript:void(0)" onclick="openTelegram('love_cleanmoon')" class="btn btn-secondary">
-            📢 Телеграмм канал
-          </a>
 
-          <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-success">
-            🤖 Написать боту
-          </a>
+    <div style="margin-top: 80px;"></div>
+
+    <div class="container">
+        <!-- Hero секция -->
+        <div class="section text-center" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+            <h1 class="display-4">Профессиональная уборка <i class="fas fa-heart"></i></h1>
+            <p class="lead">Чистота, которая остается с вами. Профессиональные клинеры, экологичные средства, гарантия качества.</p>
+            <button class="btn btn-light btn-lg mt-3" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
+                Выбрать услугу
+            </button>
         </div>
-      </div>
-    </div>
 
-    <!-- ВТОРОЙ СЛАЙД - О нас (История компании) -->
-    <div id="about" class="container my-5">
-      <div class="text-center mb-5">
-        <h2 class="display-4">О нашей компании</h2>
-        <p class="lead">История развития и наши ценности</p>
-        <hr class="w-25 mx-auto">
-      </div>
+        <!-- Услуги -->
+        <div id="services" class="section">
+            <h2 class="text-center mb-4">Наши услуги</h2>
+            <div class="row" id="servicesGrid"></div>
+        </div>
 
-      <!-- История компании -->
-      <div class="row mb-5">
-        <div class="col-12">
-          <h3 class="text-center mb-4">Наш путь</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="card company-card">
-                <div class="card-body">
-                  <div class="timeline-year">2020</div>
-                  <h5>Основание компании</h5>
-                  <p>Компания "С Любовью" начала свой путь с небольшой команды из 3 человек, которые верили в чистоту и качество. Начинали с уборки квартир и маленьких офисов.</p>
+        <!-- О нас -->
+        <div id="about" class="section">
+            <h2 class="text-center mb-4">О нас</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Клининговая служба «С Любовью» — это команда профессионалов, которые знают всё о чистоте.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle text-success"></i> Используем только экологичные средства</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Современное оборудование</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Опытные и ответственные сотрудники</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Гарантия качества на все услуги</li>
+                    </ul>
                 </div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="card company-card">
-                <div class="card-body">
-                  <div class="timeline-year">2022</div>
-                  <h5>Расширение команды и услуг</h5>
-                  <p>Команда выросла до 15 профессиональных клинеров. Мы добавили новые услуги: генеральную уборку, мойку окон, химчистку мягкой мебели и эко-уборку.</p>
+                <div class="col-md-6">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <h3 class="text-primary">500+</h3>
+                            <p>Клиентов</p>
+                        </div>
+                        <div class="col-4">
+                            <h3 class="text-primary">30+</h3>
+                            <p>Сотрудников</p>
+                        </div>
+                        <div class="col-4">
+                            <h3 class="text-primary">4+</h3>
+                            <p>Года работы</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="timeline-item">
-              <div class="card company-card">
-                <div class="card-body">
-                  <div class="timeline-year">2024</div>
-                  <h5>Выход на новый уровень</h5>
-                  <p>Начали сотрудничество с крупными компаниями и ТЦ. Внедрили эко-технологии уборки и систему контроля качества. Нас выбрали более 500 постоянных клиентов.</p>
+        </div>
+
+        <!-- Контакты -->
+        <div id="contacts" class="section">
+            <h2 class="text-center mb-4">Контакты</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-phone fa-2x text-primary"></i>
+                    <p><a href="tel:+79656531941">+7 (965) 653-19-41</a></p>
                 </div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="card company-card">
-                <div class="card-body">
-                  <div class="timeline-year">2026</div>
-                  <h5>Сегодня</h5>
-                  <p>Мы - команда из 30+ профессионалов, используем современное оборудование и экологичные средства. Наша миссия - делать мир чище с любовью к каждому клиенту.</p>
+                <div class="col-md-4">
+                    <i class="fas fa-envelope fa-2x text-primary"></i>
+                    <p><a href="mailto:plotnikovalubov121@gmail.com">plotnikovalubov121@gmail.com</a></p>
                 </div>
-              </div>
+                <div class="col-md-4">
+                    <i class="fab fa-telegram fa-2x text-primary"></i>
+                    <p><a href="https://t.me/Lubasha9999">@Lubasha9999</a></p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-
-      <!-- Наши ценности -->
-      <div class="values-section rounded">
-        <div class="row text-center">
-          <div class="col-md-4 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <h4>❤️ Качество</h4>
-                <p>Используем только профессиональные средства и современное оборудование</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <h4>🌱 Эко-подход</h4>
-                <p>Безопасные для здоровья и окружающей среды средства уборки</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <h4>🤝 Надежность</h4>
-                <p>Гарантия качества и индивидуальный подход к каждому клиенту</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Статистика -->
-      <div class="row text-center mt-5">
-        <div class="col-md-3 col-6 mb-3">
-          <h3 class="text-primary">500+</h3>
-          <p>Довольных клиентов</p>
-        </div>
-        <div class="col-md-3 col-6 mb-3">
-          <h3 class="text-primary">30+</h3>
-          <p>Профессионалов</p>
-        </div>
-        <div class="col-md-3 col-6 mb-3">
-          <h3 class="text-primary">4+</h3>
-          <p>Года работы</p>
-        </div>
-        <div class="col-md-3 col-6 mb-3">
-          <h3 class="text-primary">24/7</h3>
-          <p>Поддержка</p>
-        </div>
-      </div>
     </div>
 
-    <!-- Блок: Наши услуги -->
-    <div id="services" class="container my-5">
-      <div class="text-center mb-5">
-        <h2 class="display-4">Наши услуги</h2>
-        <p class="lead">Профессиональная уборка для дома и бизнеса</p>
-        <hr class="w-25 mx-auto">
-      </div>
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-              <h3>🏠 Уборка квартир</h3>
-              <p>Поддерживающая, генеральная, после ремонта. Работаем аккуратно и с вниманием к деталям.</p>
-              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
-            </div>
-          </div>
+    <!-- Корзина -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Корзина</h3>
+            <button class="close-cart" onclick="closeCart()">&times;</button>
         </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-              <h3>🏢 Уборка офисов</h3>
-              <p>Ежедневная, комплексная, поддерживающая чистоту. Не мешаем работе сотрудников.</p>
-              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
-            </div>
-          </div>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total" id="cartTotal">Итого: 0₽</div>
+            <button class="checkout-btn" onclick="openCheckout()">Оформить заказ</button>
         </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-              <h3>🧼 Химчистка мебели</h3>
-              <p>Диванов, кресел, ковров. Безопасные средства, быстрое высыхание.</p>
-              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-              <h3>🪟 Мойка окон</h3>
-              <p>Профессиональная мойка окон любой сложности. Чистота без разводов.</p>
-              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-              <h3>🏭 Уборка после ремонта</h3>
-              <p>Удаляем строительную пыль, остатки материалов. Готовим помещение к заселению.</p>
-              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-              <h3>🌿 Эко-уборка</h3>
-              <p>Безопасные гипоаллергенные средства. Идеально для семей с детьми и аллергиков.</p>
-              <a href="prace.html" class="btn btn-outline-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- Блок: Отзывы клиентов -->
-    <div id="reviews" class="container my-5">
-      <div class="text-center mb-5">
-        <h2 class="display-4">Отзывы наших клиентов</h2>
-        <p class="lead">Что говорят о нас те, кто уже воспользовался нашими услугами</p>
-        <hr class="w-25 mx-auto">
-      </div>
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card review-card h-100 p-3">
-            <div class="card-body">
-              <div class="review-text">
-                <p>"Заказывали генеральную уборку квартиры после ремонта. Ребята приехали вовремя, всё сделали на высшем уровне! Особенно порадовало внимание к деталям — отмыли даже труднодоступные места. Рекомендую!"</p>
-              </div>
-              <div class="review-author">
-                — Анна, Москва
-              </div>
-            </div>
-          </div>
+    <!-- Модальное окно оформления -->
+    <div id="checkoutModal" class="checkout-modal">
+        <div class="checkout-form">
+            <h3><i class="fas fa-clipboard-list"></i> Оформление заказа</h3>
+            <form id="orderForm">
+                <div class="form-group">
+                    <input type="text" id="clientName" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="clientPhone" placeholder="Телефон" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="clientEmail" placeholder="Email (для чека)">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="clientAddress" placeholder="Адрес" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="clientComment" rows="3" placeholder="Комментарий к заказу"></textarea>
+                </div>
+                <button type="button" class="submit-order" onclick="submitOrder()">
+                    <i class="fas fa-paper-plane"></i> Отправить заказ
+                </button>
+            </form>
+            <button class="btn btn-secondary w-100 mt-2" onclick="closeCheckout()">Отмена</button>
         </div>
-        <div class="col-md-4 mb-4">
-          <div class="card review-card h-100 p-3">
-            <div class="card-body">
-              <div class="review-text">
-                <p>"Обратились для регулярной уборки офиса. Очень довольны результатом! Команда работает быстро, качественно, и что важно — не мешает сотрудникам. Цены адекватные, обслуживание на высоте."</p>
-              </div>
-              <div class="review-author">
-                — ООО "ТехноСервис"
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card review-card h-100 p-3">
-            <div class="card-body">
-              <div class="review-text">
-                <p>"Делали химчистку дивана и ковра. Результат превзошел ожидания! Пятна вывели полностью, запаха химии не осталось. Вежливые и аккуратные сотрудники. Спасибо, будем обращаться еще!"</p>
-              </div>
-              <div class="review-author">
-                — Елена, Московская область
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- Блок: Контактная информация -->
-    <div id="contacts" class="contact-info">
-      <div class="container">
-        <div class="text-center mb-4">
-          <h2 class="display-4">Свяжитесь с нами</h2>
-          <p class="lead">Мы всегда на связи и готовы ответить на ваши вопросы</p>
-          <hr class="w-25 mx-auto">
-        </div>
-        <div class="row">
-          <div class="col-md-4 text-center contact-item">
-            <h4>📞 Телефон</h4>
-            <a href="tel:+79656531941">+7 (965) 653-19-41</a>
-          </div>
-          <div class="col-md-4 text-center contact-item">
-            <h4>✉️ Email</h4>
-            <a href="mailto:plotnikovalubov121@gmail.com">plotnikovalubov121@gmail.com</a>
-          </div>
-          <div class="col-md-4 text-center contact-item">
-            <h4>📍 Районы работы</h4>
-            <p>Москва и Московская область</p>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-12 text-center">
-            <a href="javascript:void(0)" onclick="openTelegram('Lubasha9999')" class="btn btn-primary mx-2">
-              📱 Написать в Telegram
-            </a>
-            <a href="javascript:void(0)" onclick="openTelegram('LoveCleanBot')" class="btn btn-success mx-2">
-              🤖 Написать боту
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="toast" class="toast-notification">✅ Добавлено в корзину!</div>
 
-    <!-- Подвал сайта -->
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 text-center text-md-start mb-3">
-            <h5>Клининговая компания "С Любовью"</h5>
-            <p class="small">Профессиональная уборка с заботой о вас и вашем доме</p>
-          </div>
-          <div class="col-md-4 text-center mb-3">
-            <h5>Навигация</h5>
-            <ul class="list-unstyled">
-              <li><a href="/">Главная</a></li>
-              <li><a href="prace.html">Прайс-лист</a></li>
-              <li><a href="#about">О нас</a></li>
-              <li><a href="#services">Услуги</a></li>
-              <li><a href="#reviews">Отзывы</a></li>
-              <li><a href="#contacts">Контакты</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 text-center text-md-end mb-3">
-            <h5>Контакты</h5>
-            <p><a href="tel:+79656531941">+7 (965) 653-19-41</a></p>
-            <p><a href="mailto:plotnikovalubov121@gmail.com">plotnikovalubov121@gmail.com</a></p>
-            <p><a href="javascript:void(0)" onclick="openTelegram('love_cleanmoon')">Наш Telegram канал</a></p>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-12 text-center">
-            <hr class="bg-secondary">
-            <p class="small mb-0">© 2026 Клининговая компания "С Любовью". Все права защищены.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script>
+        // Данные для Telegram бота
+        const BOT_TOKEN = "8627698705:AAFAKWoR0iqUmED3bDQQknZN6w6yd_6s0k0";
+        const CHAT_ID = "-1001234567890"; // ID группы или канала (можно оставить пустым)
+        
+        // Ваш email для получения уведомлений
+        const YOUR_EMAIL = "kirill0606kira@yandex.ru";
+        
+        // Услуги
+        const services = [
+            { id: "general", name: "Генеральная уборка", pricePerUnit: 120, unit: "кв.м", icon: "🧹" },
+            { id: "windows", name: "Мойка окон", pricePerUnit: 350, unit: "створка", icon: "🪟" },
+            { id: "eco", name: "ЭКО уборка", pricePerUnit: 150, unit: "кв.м", icon: "🌿" },
+            { id: "construction", name: "После строительства", pricePerUnit: 180, unit: "кв.м", icon: "🏗️" },
+            { id: "ozone", name: "Озонирование", pricePerUnit: 500, unit: "кв.м", icon: "💨" },
+            { id: "regular", name: "На постоянной основе", pricePerUnit: 180, unit: "кв.м", icon: "🔄" }
+        ];
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+        // Химчистка
+        const chemicalItems = [
+            { id: "carpet", name: "Ковер", pricePerSqm: 200 },
+            { id: "mattress", name: "Матрас", price: 2500 },
+            { id: "armchair", name: "Кресло", price: 1500 },
+            { id: "soft_chair", name: "Мягкие стулья", price: 500 }
+        ];
 
-      ym(108207850, 'init', {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true,
-          webvisor:true
-      });
+        let cart = [];
+
+        // Загрузка корзины из localStorage
+        function loadCart() {
+            const saved = localStorage.getItem('cleaning_cart');
+            if (saved) {
+                cart = JSON.parse(saved);
+                updateCartUI();
+            }
+        }
+
+        // Сохранение корзины
+        function saveCart() {
+            localStorage.setItem('cleaning_cart', JSON.stringify(cart));
+        }
+
+        // Добавление в корзину
+        function addToCart(serviceId, serviceName, quantity, unit, price, details) {
+            cart.push({
+                id: Date.now(),
+                serviceId: serviceId,
+                name: serviceName,
+                quantity: quantity,
+                unit: unit,
+                price: price,
+                details: details,
+                total: price
+            });
+            saveCart();
+            updateCartUI();
+            showToast();
+        }
+
+        // Удаление из корзины
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            saveCart();
+            updateCartUI();
+        }
+
+        // Обновление UI корзины
+        function updateCartUI() {
+            const cartItemsDiv = document.getElementById('cartItems');
+            const cartCountSpan = document.getElementById('cartCount');
+            const cartTotalDiv = document.getElementById('cartTotal');
+            
+            let total = 0;
+            cartItemsDiv.innerHTML = '';
+            
+            cart.forEach(item => {
+                total += item.total;
+                cartItemsDiv.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-details">${item.details}</div>
+                        </div>
+                        <div class="cart-item-price">${item.total}₽</div>
+                        <button class="remove-item" onclick="removeFromCart(${item.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            });
+            
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<div class="text-center text-muted">Корзина пуста</div>';
+            }
+            
+            cartCountSpan.textContent = cart.length;
+            cartTotalDiv.textContent = `Итого: ${total}₽`;
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2000);
+        }
+
+        function openCart() {
+            document.getElementById('cartSidebar').classList.add('open');
+        }
+
+        function closeCart() {
+            document.getElementById('cartSidebar').classList.remove('open');
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) {
+                alert('Корзина пуста!');
+                return;
+            }
+            document.getElementById('checkoutModal').classList.add('active');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+
+        // Отправка заказа
+        async function submitOrder() {
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const email = document.getElementById('clientEmail').value;
+            const address = document.getElementById('clientAddress').value;
+            const comment = document.getElementById('clientComment').value;
+            
+            if (!name || !phone || !address) {
+                alert('Заполните имя, телефон и адрес!');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + item.total, 0);
+            
+            // Формируем текст заказа
+            let orderText = `🆕 НОВЫЙ ЗАКАЗ\n\n`;
+            orderText += `👤 Имя: ${name}\n`;
+            orderText += `📞 Телефон: ${phone}\n`;
+            orderText += `📧 Email: ${email || 'не указан'}\n`;
+            orderText += `🏠 Адрес: ${address}\n`;
+            orderText += `📝 Комментарий: ${comment || 'нет'}\n\n`;
+            orderText += `📦 Услуги:\n`;
+            
+            cart.forEach((item, i) => {
+                orderText += `${i+1}. ${item.name}: ${item.details} = ${item.total}₽\n`;
+            });
+            
+            orderText += `\n💰 ИТОГО: ${total}₽\n`;
+            orderText += `\n⏰ ${new Date().toLocaleString()}`;
+            
+            // Отправляем в Telegram
+            if (BOT_TOKEN && CHAT_ID) {
+                try {
+                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: orderText,
+                            parse_mode: 'HTML'
+                        })
+                    });
+                } catch (e) {
+                    console.error('Telegram error:', e);
+                }
+            }
+            
+            // Отправляем на email через FormSubmit (бесплатно, без бэкенда)
+            try {
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('phone', phone);
+                formData.append('email', email);
+                formData.append('address', address);
+                formData.append('comment', comment);
+                formData.append('order', orderText);
+                formData.append('_subject', `Новый заказ от ${name}`);
+                formData.append('_replyto', email || YOUR_EMAIL);
+                
+                await fetch('https://formsubmit.co/ajax/' + YOUR_EMAIL, {
+                    method: 'POST',
+                    body: formData
+                });
+            } catch (e) {
+                console.error('Email error:', e);
+            }
+            
+            // Также можно отправить напрямую менеджеру в Telegram
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: '1426855811', // Ваш личный ID
+                        text: orderText
+                    })
+                });
+            } catch (e) {
+                console.error('Direct message error:', e);
+            }
+            
+            alert('✅ Заказ отправлен! Менеджер свяжется с вами в ближайшее время.');
+            
+            // Очищаем корзину и закрываем модальное окно
+            cart = [];
+            saveCart();
+            updateCartUI();
+            closeCheckout();
+            closeCart();
+            
+            // Очищаем форму
+            document.getElementById('orderForm').reset();
+        }
+
+        // Генерация карточек услуг
+        function renderServices() {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = '';
+            
+            services.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'col-md-4';
+                card.innerHTML = `
+                    <div class="service-card">
+                        <h3>${service.icon} ${service.name}</h3>
+                        <div class="service-price">${service.pricePerUnit}₽ / ${service.unit}</div>
+                        <input type="number" id="qty_${service.id}" class="service-input" placeholder="Введите ${service.unit}" min="1" value="1">
+                        <button class="add-to-cart" onclick="addServiceToCart('${service.id}', '${service.name}', ${service.pricePerUnit}, '${service.unit}')">
+                            <i class="fas fa-cart-plus"></i> Добавить в корзину
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            
+            // Добавляем химчистку отдельно
+            const chemicalCard = document.createElement('div');
+            chemicalCard.className = 'col-md-4';
+            chemicalCard.innerHTML = `
+                <div class="service-card">
+                    <h3>🧼 Химчистка</h3>
+                    <div class="service-price">от 500₽</div>
+                    <select id="chemicalSelect" class="service-input">
+                        ${chemicalItems.map(item => `<option value="${item.id}">${item.name}${item.pricePerSqm ? ` (${item.pricePerSqm}₽/м²)` : ` (${item.price}₽/шт)`}</option>`).join('')}
+                    </select>
+                    <input type="number" id="chemicalQty" class="service-input" placeholder="Введите количество" min="1" value="1">
+                    <button class="add-to-cart" onclick="addChemicalToCart()">
+                        <i class="fas fa-cart-plus"></i> Добавить в корзину
+                    </button>
+                </div>
+            `;
+            grid.appendChild(chemicalCard);
+        }
+        
+        function addServiceToCart(serviceId, serviceName, pricePerUnit, unit) {
+            const qtyInput = document.getElementById(`qty_${serviceId}`);
+            let quantity = parseFloat(qtyInput.value);
+            if (isNaN(quantity) || quantity <= 0) quantity = 1;
+            
+            const totalPrice = pricePerUnit * quantity;
+            const details = `${quantity} ${unit}`;
+            
+            addToCart(serviceId, serviceName, quantity, unit, totalPrice, details);
+            qtyInput.value = 1;
+        }
+        
+        function addChemicalToCart() {
+            const select = document.getElementById('chemicalSelect');
+            const selectedId = select.value;
+            const item = chemicalItems.find(i => i.id === selectedId);
+            const qtyInput = document.getElementById('chemicalQty');
+            let quantity = parseFloat(qtyInput.value);
+            if (isNaN(quantity) || quantity <= 0) quantity = 1;
+            
+            let totalPrice, details;
+            if (item.pricePerSqm) {
+                totalPrice = item.pricePerSqm * quantity;
+                details = `${item.name}: ${quantity} м²`;
+            } else {
+                totalPrice = item.price * quantity;
+                details = `${item.name}: ${quantity} шт`;
+            }
+            
+            addToCart('chemical', `Химчистка - ${item.name}`, quantity, item.pricePerSqm ? 'м²' : 'шт', totalPrice, details);
+            qtyInput.value = 1;
+        }
+        
+        document.getElementById('cartBtn').onclick = openCart;
+        
+        // Инициализация
+        renderServices();
+        loadCart();
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/108207850" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
     
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
